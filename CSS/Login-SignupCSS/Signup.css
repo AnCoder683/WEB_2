@@ -1,0 +1,89 @@
+body{
+   background: url("/img/wallpaperflare.com_wallpaper.jpg") no-repeat;
+   background-size: cover;
+   background-position: center;
+   height: 1000px;
+}
+.signup-form{
+   box-sizing: border-box;
+   background: rgba(0, 0, 0, .6);
+   border-radius: 10px;
+   padding: 30px;
+   padding-top: 70px;
+   width: 420px;
+   height: 540px;
+   display: flex;
+   flex-direction: column;
+   position: fixed;
+   top: 45%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color: white;
+   row-gap: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+}
+
+.signup-form .form-input{
+   display: flex;
+   flex-direction: column;
+   row-gap: 5px;
+   margin-bottom: 15px;
+}
+
+.form-input label{
+   font-weight: 500;
+   font-size: 17px;
+}
+
+.form-input input{
+   height: 26px;
+   border: none;
+   border-radius: 5px;
+   padding: 5px 10px;
+   background: rgba(105, 95, 95, 0.3);
+   outline: none;
+   font-size: 17px;
+   line-height: 26px;
+   color: white;
+}
+
+.form-input input::placeholder{
+   color: rgba(255, 255, 255, 0.3);
+}
+
+.reNameThis{
+   display: flex;
+   align-items: center;
+}
+
+.reNameThis input{
+   
+}
+
+.reNameThis a{
+   text-decoration: none;
+   color: rgba(47, 196, 153, 0.6);
+}
+
+.reNameThis a:hover{
+   text-decoration: underline;
+
+}
+
+.signup-button{
+   margin-top: 30px;
+   border-radius: 5px;
+   padding: 12px;
+   font-size: 16px;
+   color: white;
+   border: none;
+   cursor: pointer;
+   font-weight: bold;
+   background: rgba(15, 200, 154, 0.705);
+   transition: color 0,15s, background 0,15s;
+}  
+
+.signup-button:active{
+   background: rgba(15, 200, 154, 0.9);
+   color: aliceblue;
+}
