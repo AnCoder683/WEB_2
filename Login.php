@@ -26,7 +26,8 @@
             </label>
             <a class="fogot-password" href="">Quên mật khẩu</a>
          </div>
-         <button class="login-button">Đăng nhập</button> 
+         <button class="login-button">Đăng nhập</button>
+         <div id="error-message" style="display: none; color: red;">Tài khoản không tồn tại!</div> 
          <label class="registor" for="">Chưa có tài khoản? <a href="">đăng ký</a></label>
    
          <div class="just-a-line"><span>Hoặc</span></div>
@@ -43,6 +44,7 @@
          </div>
       </form>
    </div>
+   
    <script src="https://kit.fontawesome.com/dc0a01535c.js" crossorigin="anonymous"></script>
 </body>
 </html>
@@ -93,7 +95,7 @@
        exit();
    } else {
        // Nếu đăng nhập không thành công, hiển thị thông báo lỗi
-       echo "Tài khoản không tồn tại!";
+       echo "<script>document.getElementById('error-message').style.display = 'block';</script>";
    }
    }
 ?>
