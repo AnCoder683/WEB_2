@@ -55,7 +55,7 @@
       $servername = "localhost";
       $dbusername = "root";
       $dbpassword = "";
-      $dbname = "web_2";
+      $dbname = "fashionstore";
   
       $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
   
@@ -65,7 +65,7 @@
       }
   
       // Truy vấn kiểm tra tài khoản trong cơ sở dữ liệu
-      $sql = "SELECT * FROM taikhoan WHERE Taikhoan='$username' AND Matkhau='$password'";
+      $sql = "SELECT * FROM taikhoan WHERE taikhoan='$username' AND matkhau='$password'";
       $result = $conn->query($sql);
   
       if ($result->num_rows > 0) {

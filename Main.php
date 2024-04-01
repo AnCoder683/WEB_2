@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
-   <link rel="stylesheet" href="./CSS/MainCSS/font&sizing.css">
-   <link rel="stylesheet" href="./CSS/MainCSS/LazyImg.css">
-   <link rel="stylesheet" href="./CSS/MainCSS/Navigation.css">
-</head>
-<body>
+<?php require './genaral/header.php';?>
+
    <header class="header">
       <div class="left-section">
          <ul class="nav">
@@ -33,7 +24,13 @@
                <input placeholder="Search" type="text">
                <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <i class="fa-solid fa-user"></i>
+            <div class="user-wrapper">
+               <i class="fa-solid fa-user user"></i>
+               <!-- <div class="user-selection">
+                  <a href="">đăng nhập</a>
+                  <a href="">đăng ký</a>
+               </div> -->
+            </div>
             <i class="fa-solid fa-cart-shopping"></i>
          </div>
       </div>
@@ -47,7 +44,6 @@
 
    </div>
 
-   <script src="https://kit.fontawesome.com/dc0a01535c.js" crossorigin="anonymous"></script>
-   <script src="Main.js"></script>
-</body>
-</html>
+   <script src="./JS/Main.js"></script>
+
+<?php require './genaral/footer.php';?>
