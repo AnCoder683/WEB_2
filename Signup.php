@@ -9,7 +9,7 @@
 </head>
 <body>
    <form class="signup-form" action="">
-      
+      <h1>Đăng ký</h1>
       <div class="form-input">
          <label for="">Tài Khoản:</label>
          <input placeholder="User" type="text">
@@ -27,6 +27,20 @@
          <label>Chấp nhận <a href="">điều khoản.</a></label>
       </div>
       <button class="signup-button">Đăng ký</button>
+      <div class="just-a-line">
+         <span>Hoặc</span>
+      </div>
+
+      <div class="signup-with-wrapper"> 
+         <a href="" class="signup-with Google">
+            <img src="logo/google.svg" alt="">
+            Google
+         </a>
+         <a href="" class="signup-with Facebook">
+            <img src="logo/facebook.svg" alt="">
+            Facebook
+         </a>
+      </div>
    </form>
 </body>
 </html>

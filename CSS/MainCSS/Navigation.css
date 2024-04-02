@@ -94,6 +94,33 @@
    flex-shrink: 0;
 }
 
+.user-wrapper{
+   position: relative;
+
+}
+
+.user-selection{
+   position: absolute;
+   height: auto;
+   width: 100px;
+   background: rgba(0, 0, 0, .7);
+   display: inline-block;
+   top: 100%;
+   left: 50%;
+   transform: translate(-50%, 0%);
+   border-radius: 8px;
+   box-sizing: border-box;
+   padding: 12px;
+}
+
+.user-selection a{
+   border-bottom: 1px solid gray;
+   text-decoration: none;
+   color: white;
+   font-size: 16px;
+   margin-bottom: 4px;
+}
+
 .search-box{
    position: relative;
    box-shadow: 3px 3px 10px rgba(0, 0, 0, .3);

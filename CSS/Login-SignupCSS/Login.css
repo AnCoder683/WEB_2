@@ -48,7 +48,7 @@ body{
 
 
 .just-a-line{
-   margin: 40px 0;
+   /* margin: 40px 0; */
    display: flex;
    position: relative;
    justify-content: center;
