@@ -1,6 +1,6 @@
 
 body{
-   background: url("/img/jirasin-yossri-W_29nYyiIpA-unsplash.jpg") no-repeat;
+   background: url("http://localhost/fashionstore/img/jirasin-yossri-W_29nYyiIpA-unsplash.jpg") no-repeat;
    background-size: cover;
    background-position: center;
    height: 1000px;

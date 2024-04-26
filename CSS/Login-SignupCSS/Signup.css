@@ -1,17 +1,18 @@
-body{
-   background: url("/img/wallpaperflare.com_wallpaper.jpg") no-repeat;
+body {
+   background: url("http://localhost/fashionstore/img/wallpaperflare.com_wallpaper.jpg") no-repeat;
    background-size: cover;
    background-position: center;
    height: 1000px;
 }
-.signup-form{
+
+.signup-form {
    box-sizing: border-box;
    background: rgba(0, 0, 0, .6);
    border-radius: 10px;
    padding: 30px;
    padding-top: 50px;
    width: 460px;
-   height: 646px;
+   /* height: 646px; */
    display: flex;
    flex-direction: column;
    position: fixed;
@@ -23,26 +24,26 @@ body{
    box-shadow: 0 0 10px rgba(0, 0, 0, .8);
 }
 
-.signup-form h1{
+.signup-form h1 {
    margin: 0;
-   margin-bottom: 20px;
+   margin-bottom: 10px;/*20px*/
    color: rgba(15, 200, 154, 0.731);
 }
 
-.signup-form .form-input{
+.signup-form .form-input {
    display: flex;
    flex-direction: column;
-   row-gap: 5px;
+   row-gap: 2px;/* 5px */
    margin-bottom: 15px;
 }
 
-.form-input label{
+.form-input label {
    font-weight: 500;
    font-size: 17px;
 }
 
-.form-input input{
-   height: 26px;
+.form-input input {
+   height: 24px;
    border: none;
    border-radius: 5px;
    padding: 5px 10px;
@@ -53,17 +54,17 @@ body{
    color: white;
 }
 
-.form-input input::placeholder{
+.form-input input::placeholder {
    color: rgba(255, 255, 255, 0.3);
 }
 
-.reNameThis{
+.reNameThis {
    display: flex;
    align-items: center;
-   
+
 }
 
-.reNameThis .abc{
+.reNameThis .abc {
    align-self: center;
    appearance: none;
    position: relative;
@@ -72,11 +73,11 @@ body{
    margin: 0;
    margin-right: 6px;
    border-radius: 10px;
-   background:rgba(255, 255, 255, 0.6);
+   background: rgba(255, 255, 255, 0.6);
    transition: 0.3s;
 }
 
-.reNameThis .abc::after{
+.reNameThis .abc::after {
    content: "";
    position: absolute;
    left: 30%;
@@ -89,26 +90,26 @@ body{
    transition: 0.3s;
 }
 
-.reNameThis .abc:checked{
+.reNameThis .abc:checked {
    background: rgba(15, 200, 154, 0.705);
 }
 
-.reNameThis .abc:checked::after{
+.reNameThis .abc:checked::after {
    background: white;
    left: 70%;
 }
 
-.reNameThis a{
+.reNameThis a {
    text-decoration: none;
    color: rgba(47, 196, 153, 0.6);
 }
 
-.reNameThis a:hover{
+.reNameThis a:hover {
    text-decoration: underline;
 
 }
 
-.signup-button{
+.signup-button {
    margin-top: 30px;
    border-radius: 5px;
    padding: 12px;
@@ -118,15 +119,15 @@ body{
    cursor: pointer;
    font-weight: bold;
    background: rgba(15, 200, 154, 0.705);
-   transition: color 0,15s, background 0,15s;
-}  
+   transition: color 0, 15s, background 0, 15s;
+}
 
-.signup-button:active{
+.signup-button:active {
    background: rgba(15, 200, 154, 0.9);
    color: aliceblue;
 }
 
-.just-a-line{
+.just-a-line {
    margin: 10px 0;
    display: flex;
    justify-content: center;
@@ -134,7 +135,7 @@ body{
    position: relative;
 }
 
-.just-a-line::before{
+.just-a-line::before {
    content: "";
    height: 1px;
    background: grey;
@@ -145,7 +146,7 @@ body{
    right: 0;
 }
 
-.just-a-line span{
+.just-a-line span {
    display: inline-block;
    padding: 2px 10px;
    position: relative;
@@ -154,14 +155,15 @@ body{
    color: rgb(245, 240, 240);
 }
 
-.signup-with-wrapper{
+.signup-with-wrapper {
    display: flex;
    column-gap: 8px;
    justify-content: space-evenly;
    align-items: center;
    margin-top: 8px;
 }
-.signup-with{
+
+.signup-with {
    /* justify-self: center; */
    text-decoration: none;
    align-self: center;
@@ -181,11 +183,11 @@ body{
    transition: 0.3s;
 }
 
-.signup-with:active{
+.signup-with:active {
    background: rgba(255, 255, 255, 0.8);
 }
 
-.signup-with img{
+.signup-with img {
    display: inline-block;
    position: absolute;
    width: 25px;

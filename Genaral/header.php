@@ -8,5 +8,7 @@
    <link rel="stylesheet" href="./CSS/MainCSS/font&sizing.css">
    <link rel="stylesheet" href="./CSS/MainCSS/LazyImg.css">
    <link rel="stylesheet" href="./CSS/MainCSS/Navigation.css">
+   <link rel="stylesheet" href="../CSS/MainCSS/slider.css">
+   <link rel="stylesheet" href="../CSS/MainCSS/body.css">
 </head>
 <body>
