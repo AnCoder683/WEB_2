@@ -6,11 +6,13 @@
    top: 0;
    left: 0;
    right: 0;
-   height: 80px;
+   height: 60px;
    box-sizing: border-box;
    border: 1px solid rgba(255, 255, 255, .2);
-   backdrop-filter: blur(1px);
+   backdrop-filter: blur(3px);
+   background: rgba(0, 0, 0, 0.3);
    box-shadow: 0 0 10px rgba(0, 0, 0, .7);
+   z-index: 10;
 }
 
 .left-section{
@@ -107,6 +109,7 @@
    display: inline-block;
    top: 100%;
    left: 50%;
+   margin-top: 5px;
    transform: translate(-50%, 0%);
    border-radius: 8px;
    box-sizing: border-box;
@@ -119,6 +122,9 @@
    color: white;
    font-size: 16px;
    margin-bottom: 4px;
+   display: block;
+   text-align: center;
+   width: 100%;
 }
 
 .search-box{
