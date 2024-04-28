@@ -1,0 +1,15 @@
+{
+    "name": "admin/fashion-store",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "thuan",
+            "email": "thuan03082003@gmail.com"
+        }
+    ],
+    "require": {}
+}
