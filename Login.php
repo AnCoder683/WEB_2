@@ -33,7 +33,7 @@
                   <a class="fogot-password" href="">Quên mật khẩu</a>
                </div>
                <button class="login-button" type="submit" name="login-button">ĐĂNG NHẬP</button>
-               <label class="registor" for="">Chưa có tài khoản? <a href="">đăng ký</a></label>
+               <label class="registor" for="">Chưa có tài khoản? <a href="Signup.php">đăng ký</a></label>
 
                <div class="just-a-line"><span>Hoặc</span></div>
 
@@ -67,16 +67,17 @@
             // Kiểm tra phản hồi từ máy chủ
             var responseObject = JSON.parse(response);
             // Kiểm tra phản hồi từ máy chủ
-            if (responseObject.status === 1 && responseObject.message === 'login_success' && responseObject.role === 'user') {
+            if (responseObject.status === 1 && responseObject.message === 'login_success') {
                alert("Đăng nhập thành công");
                window.location.href = "./Main.php";
-            } else if (responseObject.status === 1 && responseObject.message === 'login_success' && responseObject.role === 'admin'){
-               alert("Đăng nhập thành công");
-               window.location.href = "./admin/index.php";
-            } else if (responseObject.status === 0 && responseObject.message === 'password_error') {
+            }else if (responseObject.status === 0 && responseObject.message === 'password_error') {
                alert("Tên đăng nhập hoặc mật khẩu hông đúng");
             } else if(responseObject.status === 0 && responseObject.message === 'do-not-exist_error') {
                alert("Tài khoản không tồn tại");
+            } else if(responseObject.status === 0 && responseObject.message === 'active_error'){
+               alert("Tài khoản đang khoá");
+            }else if(responseObject.status === 0 && responseObject.message === 'empty_error'){
+               alert("Vui lòng điền đầy đủ thông tin");
             }
          }
       });

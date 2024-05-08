@@ -100,15 +100,14 @@
    position: relative;
 
 }
-
+/* css của selection của user */
 .user-selection{
    position: absolute;
    height: auto;
-   width: 100px;
+   width: 130px;
    background: rgba(0, 0, 0, .7);
    display: inline-block;
    top: 100%;
-   left: 50%;
    margin-top: 5px;
    transform: translate(-50%, 0%);
    border-radius: 8px;
@@ -121,10 +120,54 @@
    text-decoration: none;
    color: white;
    font-size: 16px;
-   margin-bottom: 4px;
    display: block;
    text-align: center;
    width: 100%;
+}
+
+.user-selection p{
+   border-bottom: 1px solid gray;
+   color: white;
+   font-size: 17px;
+   margin-bottom: 0px;
+   margin-top: 0px;
+   display: block;
+   text-align: center;
+   width: 100%;
+}
+/* css của cart */
+.user-cart{
+   position: absolute;
+   height: auto;
+   width: 1800px;
+   background: rgba(0, 0, 0, .7);
+   display: inline-block;
+   top: 100%;
+   margin-top: 5px;
+   transform: translate(-50%, 0%);
+   border-radius: 8px;
+   box-sizing: border-box;
+   padding: 12px;
+}
+
+.user-cart table {
+   width: 52%;
+   border-collapse: collapse;
+}
+
+.user-cart th, .user-cart td {
+   font-size: 16px;
+   font-family: Arial, Helvetica, sans-serif;
+   border: 1px solid rgba(255, 255, 255, 0.5);
+   padding: 8px;
+   text-align: left;
+   color: white;
+}
+
+.user-cart th.scope {
+   font-size: 18px;
+   font-family: Arial, Helvetica, sans-serif;
+   color: white;
 }
 
 .search-box{
@@ -196,3 +239,4 @@
       width: 20vw;
    }
 }
+

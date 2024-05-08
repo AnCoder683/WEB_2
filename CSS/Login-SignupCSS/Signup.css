@@ -4,15 +4,13 @@ body {
    background-position: center;
    height: 1000px;
 }
-
 .signup-form {
    box-sizing: border-box;
    background: rgba(0, 0, 0, .6);
    border-radius: 10px;
    padding: 30px;
    padding-top: 50px;
-   width: 460px;
-   /* height: 646px; */
+   width: 660px;
    display: flex;
    flex-direction: column;
    position: fixed;
@@ -22,18 +20,37 @@ body {
    color: white;
    row-gap: 10px;
    box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+   flex-wrap: nowrap;
+}
+
+.auth__form-group1 {
+   width: 45%;
+   float: left;
+   margin-right: 30px;
+}
+
+.gender-selection select {
+   width: 14%;
+   padding: 5px;
+   border: 1px solid #dddddd;
+   border-radius: 5px;
+   background-color: #f9f9f9;
+   color: #555555;
+   outline: none;
 }
 
 .signup-form h1 {
    margin: 0;
-   margin-bottom: 10px;/*20px*/
+   margin-bottom: 10px;
+   /*20px*/
    color: rgba(15, 200, 154, 0.731);
 }
 
 .signup-form .form-input {
    display: flex;
    flex-direction: column;
-   row-gap: 2px;/* 5px */
+   row-gap: 2px;
+   /* 5px */
    margin-bottom: 15px;
 }
 

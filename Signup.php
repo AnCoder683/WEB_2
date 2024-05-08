@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,45 +21,53 @@
                <div id=" at_least_8_chars-involing_char_num-username-error-massage" style="display: none; color: red;" ">Tài khoản phải dài hơn 8 ký tự, chứa cả chữ và số </div>
             </div>
             <div class=" form-input">
-               <label for="">Mật khẩu:</label>
-               <input placeholder="Password" type="password" name="text_password" oninput="checking_Password()">
-               <div id="empty-password-error-massage" style="display: none; color: red;">Mật khẩu không được để trống</div>
-               <div id="at_least_8_chars-involing_char_num-password-error-massage" style="display: none; color: red;">Mật khẩu phải dài hơn 8 ký tự, chứa cả chữ và số</div>
+                  <label for="">Mật khẩu:</label>
+                  <input placeholder="Password" type="password" name="text_password" oninput="checking_Password()">
+                  <div id="empty-password-error-massage" style="display: none; color: red;">Mật khẩu không được để trống</div>
+                  <div id="at_least_8_chars-involing_char_num-password-error-massage" style="display: none; color: red;">Mật khẩu phải dài hơn 8 ký tự, chứa cả chữ và số</div>
+               </div>
+               <div class="form-input">
+                  <label for="">Nhập lại Mật khẩu:</label>
+                  <input placeholder="Password" type="password" name="text_password_confirm" onchange="checking_Confirmed_Password()">
+                  <div id="empty-confirmed_password-error-massage" style="display: none; color: red;">Xác nhận mật khẩu không được để trống</div>
+                  <div id="dismatch-password-error-massage" style="display: none; color: red;">Xác nhận mật khẩu không khớp</div>
+               </div>
             </div>
-            <div class="form-input">
-               <label for="">Nhập lại Mật khẩu:</label>
-               <input placeholder="Password" type="password" name="text_password_confirm" onchange="checking_Confirmed_Password()">
-               <div id="empty-confirmed_password-error-massage" style="display: none; color: red;">Xác nhận mật khẩu không được để trống</div>
-               <div id="dismatch-password-error-massage" style="display: none; color: red;">Xác nhận mật khẩu không khớp</div>
+            <div class="auth__form-group2">
+               <div class="form-input">
+                  <label for="">Nhập họ tên:</label>
+                  <input placeholder="Fullname" type="text" name="text_fullname" oninput="checking_Fullname()">
+                  <div id="empty-fullname-error-massage" style="display: none; color: red;">Họ tên không được để trống</div>
+               </div>
+
+               <div class="form-input">
+                  <label for="">Nhập địa chỉ email:</label>
+                  <input placeholder="Email Address" type="text" name="text_email" oninput="checking_Email_Address()">
+                  <div id="empty-email-error-massage" style="display: none; color: red;">Địa chỉ Email không được để trống</div>
+                  <div id="dismatch-email-error-massage" style="display: none; color: red;">Địa chỉ Email phải có đuôi @gmail.com</div>
+               </div>
+
+               <div class="form-input">
+                  <label for="">Nhập số điện thoại:</label>
+                  <input placeholder="Phone Number" type="text" name="text_phone_number" oninput="checking_Phone_Number()">
+                  <div id="empty-phone_number-error-massage" style="display: none; color: red;">Số điện thoại không được để trống</div>
+                  <div id="starting_with_09-at_least_12_chars-phone_number-error-message" style="display: none; color: red;">Số điện thoại phải bắt đầu bằng 09 và ít nhất 10 số</div>
+               </div>
             </div>
          </div>
-         <div class="auth__form-group2">
-            <div class="form-input">
-               <label for="">Nhập họ tên:</label>
-               <input placeholder="Fullname" type="text" name="text_fullname" oninput="checking_Fullname()">
-               <div id="empty-fullname-error-massage" style="display: none; color: red;">Họ tên không được để trống</div>
-            </div>
-
-            <div class="form-input">
-               <label for="">Nhập địa chỉ email:</label>
-               <input placeholder="Email Address" type="text" name="text_email" oninput="checking_Email_Address()">
-               <div id="empty-email-error-massage" style="display: none; color: red;">Địa chỉ Email không được để trống</div>
-               <div id="dismatch-email-error-massage" style="display: none; color: red;">Địa chỉ Email phải có đuôi @gmail.com</div>
-            </div>
-
-            <div class="form-input">
-               <label for="">Nhập số điện thoại:</label>
-               <input placeholder="Phone Number" type="text" name="text_phone_number" oninput="checking_Phone_Number()">
-               <div id="empty-phone_number-error-massage" style="display: none; color: red;">Số điện thoại không được để trống</div>
-               <div id="starting_with_09-at_least_12_chars-phone_number-error-message" style="display: none; color: red;">Số điện thoại phải bắt đầu bằng 09 và ít nhất 10 số</div>
-            </div>
+         <div class="gender-selection">
+            <label for="">Giới tính:</label>
+            <select name="gender-selection" id="gender-selection" oninput="checking_Gender_Selection()">
+               <option value="None">None</option>
+               <option value="Nam">Nam</option>
+               <option value="Nữ">Nữ</option>
+            </select>
+            <div id="gender-selection-error" style="display: none; color: red;">Bạn chưa chọn giới tính</div>
          </div>
-      </div>
-      
-      <div class="reNameThis">
+         <div class="reNameThis">
             <input class="abc" type="checkbox" name="policy_acception">
             <label>Chấp nhận <a href="">điều khoản.</a></label>
-       </div>
+         </div>
          <div id="error-message-checkbox" style="display: none; color: red;">Chưa đồng ý với các điều khoản</div>
          <button type="submit" class="signup-button" name="signup-button">ĐĂNG KÝ</button>
          <div class="just-a-line">
@@ -89,16 +96,21 @@
          url: './Genaral/xuly_login_signup.php',
          data: $(this).serializeArray(),
          success: function(response) {
+            console.log(response);
             console.log("response: ", response);
             // Kiểm tra phản hồi từ máy chủ
             var responseObject = JSON.parse(response);
             // Kiểm tra phản hồi từ máy chủ
             if (responseObject.status === 1 && responseObject.message === 'signup_success') {
-               alert("Đăng nhập thành công");
+               alert("Đăng ký thành công");
                window.location.href = "./Login.php";
             } else if (responseObject.status === 0 && responseObject.message === 'exist-account_error') {
                alert("Tài khoản đã tồn tại");
                document.getElementsByName('text_username')[0].focus();
+            } else if (responseObject.status === 0 && responseObject.message === 'gender-selection-error'){
+               alert("Bạn chưa chọn giới tính");
+            }else if(responseObject.status === 0 && responseObject.message === 'empty_error'){
+               alert("Vui lòng điền đầy đủ thông tin");
             }
          }
       });
@@ -187,6 +199,16 @@
       } else {
          document.getElementById('empty-phone_number-error-massage').style.display = "none";
          document.getElementById('starting_with_09-at_least_12_chars-phone_number-error-message').style.display = "none";
+      }
+   }
+
+   function checking_Gender_Selection(){
+      var gender = document.getElementById('gender-selection');
+
+      if(gender.value === "None"){
+         document.getElementById('gender-selection-error').style.display = "block";
+      }else{
+         document.getElementById('gender-selection-error').style.display = "none";
       }
    }
 </script>

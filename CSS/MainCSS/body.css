@@ -131,6 +131,30 @@
    width: 100%;
 }
 
+/* css button mua hàng */
+.add-cart {
+   display: flex;
+   justify-content: center;
+   margin-top: 20px; /* Khoảng cách giữa nút Mua ngay và phần tiêu đề sản phẩm */
+}
+
+.add-to-cart {
+
+   height: 40px; /* Chiều cao nút */
+   width: 120px; /* Chiều rộng nút */
+   border: none; /* Loại bỏ viền */
+   border-radius: 5px; /* Bo tròn góc */
+   background-color: #007bff; /* Màu nền */
+   color: #fff; /* Màu chữ */
+   font-size: 16px; /* Kích thước chữ */
+   cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột vào */
+   transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.add-to-cart:hover {
+   background-color: #0056b3; /* Màu nền khi di chuột vào */
+}
+
 .more{
    padding: 50px 0;
    text-align: center;
