@@ -1,6 +1,6 @@
 <?php
     class BaseModel extends Database{
-        private $connect;
+        public $connect;
         public function __construct()
         {
             $this->connect = $this->connectDatabase();
@@ -25,9 +25,9 @@
 
         public function findById($table, $id){
             $pk = $this->_getPK($table);
-            $sql = "SELECT * FROM $table WHERE $pk = $id";
+            $sql = "SELECT * FROM $table WHERE $pk = '$id'";
             $query = $this->_query($sql);
-            return $this->_getArrayData($query);
+            return $this->_getObjData($query);
         }
 
         public function insert($table, $data){
@@ -58,7 +58,7 @@
             $this->_query($sql);
         }
 
-        protected function _getArrayData($query){
+        public function _getArrayData($query){
             $data = [];
             while($row = mysqli_fetch_assoc($query)){
                 array_push($data, $row);
@@ -66,8 +66,13 @@
             return $data;
         }
 
+        public function _getObjData($query){
+            $row = mysqli_fetch_assoc($query);
+            return $row;
+        }
+
         // hàm này lấy pk
-        protected function _getPK($table){
+        public function _getPK($table){
             $sqlID = "SELECT COLUMN_NAME
             FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
             WHERE TABLE_NAME = '$table'
@@ -82,7 +87,7 @@
         }
 
         // hàm này để đẩy query xuống DB
-        protected function _query($sql){
+        public function _query($sql){
             return mysqli_query($this->connect, $sql);
         }
 
