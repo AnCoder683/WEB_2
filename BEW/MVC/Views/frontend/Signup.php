@@ -73,11 +73,12 @@
    </form>
 
 <script>
+   var BASE_URL = "http://localhost/BEW";  
    $("#signup-form").on("submit", function(event) {
       event.preventDefault();
       $.ajax({
          type: "POST",
-         url: './Genaral/xuly_login_signup.php',
+         url: BASE_URL+'/signup/handleSignup',
          data: $(this).serializeArray(),
          success: function(response) {
             console.log(response);
@@ -85,16 +86,14 @@
             // Kiểm tra phản hồi từ máy chủ
             var responseObject = JSON.parse(response);
             // Kiểm tra phản hồi từ máy chủ
-            if (responseObject.status === 1 && responseObject.message === 'signup_success') {
+            if (responseObject.status === 1) {
                alert("Đăng ký thành công");
-               window.location.href = "./Login.php";
-            } else if (responseObject.status === 0 && responseObject.message === 'exist-account_error') {
+               window.location.href = BASE_URL + "/login/showlogin";
+            }else if(responseObject.status === 0 && responseObject.message === 'emty-error'){
+               alert("Vui lòng điền đầy đủ thông tin");
+            } else if (responseObject.status === 0 && responseObject.message === 'exist-error') {
                alert("Tài khoản đã tồn tại");
                document.getElementsByName('text_username')[0].focus();
-            } else if (responseObject.status === 0 && responseObject.message === 'gender-selection-error'){
-               alert("Bạn chưa chọn giới tính");
-            }else if(responseObject.status === 0 && responseObject.message === 'empty_error'){
-               alert("Vui lòng điền đầy đủ thông tin");
             }
          }
       });

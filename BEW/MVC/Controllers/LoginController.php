@@ -22,9 +22,10 @@
 
         public function validation() {
             if($_SERVER["REQUEST_METHOD"] == "POST") {
-                if(!isset($_POST['text_username_login']) || !isset($_POST['text_password_login'])) {
-                    $reponse = ["status" => 0, "message" => "Vui lòng điền đầy đủ thông tin"];
-                } else {
+                if(isset($_POST['text_username_login']) && isset($_POST['text_password_login'])) {
+                    if (empty($_POST['text_username_login']) || empty($_POST['text_password_login'])){
+                        $reponse = ["status" => 0, "message" => "Vui lòng điền đầy đủ thông tin"];
+                    } else {
                     $username = $_POST['text_username_login'];
                     $password = $_POST['text_password_login'];
                     $result = $this->acountmodel->findUsername($username);
@@ -40,6 +41,7 @@
                         $reponse = ["status" => 1, "message" => "Thành công"];
                     }
                 }
+            }
             } else {
                 $reponse = ["status" => 0, "message" => "Không nhận được yêu cầu"];
             }

@@ -21,7 +21,17 @@
         }
 
         public function insertUsername($username, $password, $tinhtrang, $quyen, $fullname, $phone, $email, $gender){
-            // if()
+            $query_taikhoan = "INSERT INTO taikhoan (tenDangNhap, MatKhau, tinhTrang, idQuyen) VALUES ('$username', '$password', '$tinhtrang', '$quyen')";
+            $query_khachhang = "INSERT INTO khachhang (idKhachHang, ten, SDT, email, gioiTinh, ngaySinh, diaChiGiaoHang) VALUES ('$username', '$fullname', '$phone', '$email', '$gender', '', '')";
+            if($this->_query($query_taikhoan)){
+                return $this->_query($query_khachhang);
+            }
+        }
+
+        public function updateUserInformation($fullname, $phone, $email, $gender, $birthday, $address, $username){
+            $gender = ($gender === 'Nam') ? 1 : 0;
+            $sql = "UPDATE khachhang SET ten = '$fullname', SDT = '$phone', email = '$email', gioiTinh = '$gender', ngaySinh = '$birthday', diaChiGiaoHang = '$address' WHERE idKhachHang = '$username'";
+            return $this->_query($sql);
         }
     }
 ?>

@@ -1,7 +1,7 @@
 <div class="container">
 <p class="title">Thông tin người dùng</p>
    <div class="wrapper-user-information">
-      <form action="./Main.php?page=Information" method="POST" class="update form" id="update">
+      <form action="#" method="POST" class="update form" id="update">
                   <div class="form-group">
                      <label for="">Họ tên:</label>
                      <input type="text" name="updateUsername" class="form-control" value="<?= $user['ten']?>" onchange="checking_Fullname()">
@@ -46,11 +46,12 @@
       </form>
 </div>
 <script>
+   var BASE_URL = "http://localhost/BEW";  
    $("#update").on("submit", function(event) {
       event.preventDefault();
       $.ajax({
          type: "POST",
-         url: './Genaral/xuly_login_signup.php',
+         url: BASE_URL+'/user/information_update',
          data: $(this).serializeArray(),
          success: function(response) {
             console.log(response);
@@ -58,12 +59,12 @@
             // Kiểm tra phản hồi từ máy chủ
             var responseObject = JSON.parse(response);
             // Kiểm tra phản hồi từ máy chủ
-            if (responseObject.status === 1 && responseObject.message === 'update_success') {
+            if (responseObject.status === 1 ) {
                alert("Cập nhật thành công");
-               window.location.href = "./Main.php?page=Information&&update=success";
+               window.location.href =BASE_URL+ "/user/information";
             } else if (responseObject.status === 0 && responseObject.message === 'empty_error') {
                alert("Vui lòng điền đầy đủ thông tin");
-            } else if (responseObject.status === 0 && responseObject.message === 'update_error'){
+            } else if (responseObject.status === 0 && responseObject.message === 'update-error'){
                alert("Cập nhật thất bại");
             }
          }

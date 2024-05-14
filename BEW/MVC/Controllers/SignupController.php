@@ -1,44 +1,49 @@
 <?php
-    class SignupController extends BaseController{
-        private $acountmodel;
-        public function __construct()
-        {
-            $this->acountmodel = $this->model("AcountModel");
-        }
-        public function showsignup() {
-            $this->view('frontend.masteruser', [
-                'header' => 'user/header',
-                'content' => 'signup',
-                'footer' => 'user/footer'
-            ]);
-        }
-        public function handleSignup() {
-            if($_SERVER["REQUEST_METHOD"] == "POST") {
-                // if(empty($username) || empty($password) || empty($password_confirm) || empty($fullname) || empty($email) || empty($phone) || empty($gender)){
-                //     echo json_encode(array("status" => 0, "message" => "empty_error"));
-                //     exit();
-                // }
-                if(!isset($_POST['text_username_login']) || !isset($_POST['text_password_login'])) {
-                    $reponse = ["status" => 0, "message" => "Vui lòng điền đầy đủ thông tin"];
+class SignupController extends BaseController
+{
+    private $acountmodel;
+    public function __construct()
+    {
+        $this->acountmodel = $this->model("AcountModel");
+    }
+    public function showsignup()
+    {
+        $this->view('frontend.masteruser', [
+            'header' => 'user/header',
+            'content' => 'signup',
+            'footer' => 'user/footer'
+        ]);
+    }
+    public function handleSignup()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['text_username']) && isset($_POST['text_password']) && isset($_POST['text_password_confirm']) && isset($_POST['text_fullname']) && isset($_POST['text_email']) && isset($_POST['text_phone_number']) && isset($_POST['gender-selection'])) {
+                if (empty($_POST['text_username']) || empty($_POST['text_password']) || empty($_POST['text_fullname']) || empty($_POST['text_email']) || empty($_POST['text_phone_number'])) {
+                    $reponse = ["status" => 0, "message" => "emty-error"];
                 } else {
-                    $username = $_POST['text_username_login'];
-                    $password = $_POST['text_password_login'];
+                    $username = $_POST['text_username'];
+                    $password = $_POST['text_password'];
+                    $fullname = $_POST['text_fullname'];
+                    $phone = $_POST['text_phone_number'];
+                    $email = $_POST['text_email'];
+                    $gender = $_POST['gender-selection'];
+                    $quyen = 'Q004';
+                    $tinhtrang = 1;
+                    if (empty($username)) {
+                        $reponse = ["status" => 0, "message" => "emty-error"];
+                    }
                     $result = $this->acountmodel->findUsername($username);
-                    if(empty($result)){
-                        $reponse = ["status" => 0, "message" => "Tài khoản không tồn tại"];
-                    } else if ($password !== $result[0]['MatKhau']) {
-                        $reponse = ["status" => 0, "message" => "Sai mật khẩu"];
-                    } else if($result[0]['tinhTrang'] == 0){
-                        $reponse = ["status" => 0, "message" => "Tài khoản đã bị khoá"];
+                    if (!empty($result)) {
+                        $reponse = ["status" => 0, "message" => "exist-error"];
                     } else {
-                        $user = $this->acountmodel->getDetailInfo($username);
-                        $_SESSION["user"] = $user[0];
+                        $this->acountmodel->insertUsername($username, $password, $tinhtrang, $quyen, $fullname, $phone, $email, $gender);
                         $reponse = ["status" => 1, "message" => "Thành công"];
                     }
                 }
-            } else {
-                $reponse = ["status" => 0, "message" => "Không nhận được yêu cầu"];
             }
-            echo json_encode($reponse);
+        } else {
+            $reponse = ["status" => 0, "message" => "Không nhận được yêu cầu"];
         }
+        echo json_encode($reponse);
     }
+}
