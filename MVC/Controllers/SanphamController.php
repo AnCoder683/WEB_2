@@ -62,13 +62,7 @@
             $id = isset($_POST['id'])?$_POST['id']:'';
             $this->view('frontend.sanpham.chitietsanpham', [
                 'dataSanPham' => $this->sanphammodel->getSanPhamById($id),
-                'dataChiTietSanPham' => $this->chitietsanphamModel->getChiTietSanPhamByIdSanPham($id),
-                'dataMau' => $this->mauModel->getMau($id),
-                'dataIdMauSanPham' => $this->mauModel->getIdMauByIdSanPham($id),
-                'dataMauSanPham' => $this->mauModel->getTenMauByIdSanPham($id),
-
-                'dataIdSizeSanPham' => $this->sizeModel->getIdSizeByIdSanPham($id),
-                'dataSizeSanPham' => $this->sizeModel->getTenSizeByIdSanPham($id)
+                'dataChiTietSanPham' => $this->chitietsanphamModel->getChiTietSanPhamByIdSanPham($id)
             ]);
         }
     }
