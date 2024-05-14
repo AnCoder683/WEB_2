@@ -2,10 +2,14 @@
     class SanphamController extends BaseController{
         private $sanphammodel;
         private $chitietsanphamModel;
+        private $mauModel;
+        private $sizeModel;
         public function __construct()
         {
             $this->sanphammodel = $this->model("SanphamModel");
             $this->chitietsanphamModel = $this->model("ChitietsanphamModel");
+            $this->mauModel = $this->model("MauModel");
+            $this->sizeModel = $this->model("SizeModel");
         }
 
         public function index(){
@@ -58,7 +62,13 @@
             $id = isset($_POST['id'])?$_POST['id']:'';
             $this->view('frontend.sanpham.chitietsanpham', [
                 'dataSanPham' => $this->sanphammodel->getSanPhamById($id),
-                'dataChiTietSanPham' => $this->chitietsanphamModel->getChiTietSanPhamByIdSanPham($id)
+                'dataChiTietSanPham' => $this->chitietsanphamModel->getChiTietSanPhamByIdSanPham($id),
+                'dataMau' => $this->mauModel->getMau($id),
+                'dataIdMauSanPham' => $this->mauModel->getIdMauByIdSanPham($id),
+                'dataMauSanPham' => $this->mauModel->getTenMauByIdSanPham($id),
+
+                'dataIdSizeSanPham' => $this->sizeModel->getIdSizeByIdSanPham($id),
+                'dataSizeSanPham' => $this->sizeModel->getTenSizeByIdSanPham($id)
             ]);
         }
     }

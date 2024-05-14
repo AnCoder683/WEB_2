@@ -15,6 +15,7 @@
 </style>
     
     <div class="container mt-5">
+    
         <nav style="
             --bs-breadcrumb-divider: url(
               &#34;data:image/svg + xml,
@@ -23,7 +24,7 @@
           " aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                    <a href="http://localhost/abc/Sanpham/showSanPham" class="text-decoration-none text-dark text-light">Trang Chủ</a>
+                    <a href="http://localhost/BEW/Sanpham/showSanPham" class="text-decoration-none text-dark text-light">Trang Chủ</a>
                 </li>
                 <li class="breadcrumb-item">
                     <a href="#" class="text-decoration-none text-dark text-light">{{ product.category.title }}</a>
@@ -84,7 +85,7 @@
                         <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-check.svg" alt />
                     </div>
                 </div>
-
+                
                 <div>
                     <label for="selectedVariant" class="form-label">Chọn màu:</label>
                     <select 
@@ -93,7 +94,9 @@
                         "
                         class="form-control w-25" ng-model="selectedVariant"
                         ng-options="variant._id as (variant.color + ' - ' + variant.size ) for variant in product.variants">
-
+                        
+                            <option value=""></option>
+                        
                         
                     </select>
                     <label for="selectedVariant" class="form-label">Chọn Size:</label>
@@ -104,6 +107,10 @@
                         "
                         class="form-control w-25" ng-model="selectedVariant"
                         ng-options="variant._id as (variant.color + ' - ' + variant.size ) for variant in product.variants">
+
+                        <option value=""></option>
+
+
                     </select>
 
                     
@@ -151,8 +158,8 @@
                         Yêu Thích
                     </div>
 
-
-                    <div class="btn btn-danger rounded-1 w-100 py-2" ng-click="addToCart(product)">
+                    <div data-idchitietsanpham="<?php echo isset($dataChiTietSanPham['idChiTietSanPham'])?$dataChiTietSanPham['idChiTietSanPham']:'hihi';?>" 
+                    data-idsanpham="<?php echo isset($dataSanPham['idSanPham'])?$dataSanPham['idSanPham']:'hihi';?>" class="btn btn-danger rounded-1 w-100 py-2 addToCart-js" ng-click="addToCart(product)">
                         <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-cart-plus.svg" />
                         Thêm Vào Giỏ Hàng
                     </div>
@@ -203,7 +210,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <!-- <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -280,9 +287,64 @@
                             <a href="#!login" class="btn btn-danger px-5">Bạn Cần Đăng Nhập</a>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
-        
+        <script>
+        $(document).ready(function(){
+        $('.addToCart-js').on('click', function(){
+                toCart();   
+            });
+            function toCart() {
+                let pushIdToCart = document.querySelector('.addToCart-js').dataset.idsanpham;
+                let quantity = document.querySelector('#quantity').value;
+                let pushIdChiTietSanPhamToCart = document.querySelector('.addToCart-js').dataset.idchitietsanpham;
+               
+                $.post("http://localhost/BEW/cart/addToCart", {
+                    sanPhamQuantity: quantity,
+                    idChiTietSanPham: pushIdChiTietSanPhamToCart
+                }, function(data){
+                    $('.body').html(data);
+                });
+            }
+        });
+        $(document).ready(function(){
+        $('#searchBtn').on('click', function(){
+                search();   
+            });
+
+            $('#find').on('keypress', function(e){
+                if (e.which === 13) { // Kiểm tra nếu phím được nhấn là phím "Enter"
+                    search();
+                }
+            });
+
+            $('#sort').on('change', function(){
+                search();
+            });
+
+            function search() {
+                let find = $('#find').val();
+                let changeVal = $('#sort').val();
+
+                $.post("http://localhost/BEW/Sanpham/timkiemSanpham", {
+                    sortType: changeVal, 
+                    findSanPham: find
+                }, function(data){
+                    $('.body').html(data); // Sử dụng đối số data để cập nhật nội dung của phần tử có id là "ketqua"
+                });
+            }
+        });
+        $('.showChiTiet-js').click(function() {
+            let idsanpham = $(this).data('idsanpham');
+            $.post("http://localhost/BEW/Sanpham/showChiTietSanPham", {
+                id: idsanpham
+            }, (data)=>{
+                $('.body').html(data);
+            })
+        });
+    </script>
+
+    
     </div>
