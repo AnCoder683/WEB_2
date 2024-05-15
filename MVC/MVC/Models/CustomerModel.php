@@ -9,5 +9,5 @@
             return $this->select($sql);
         }
 
-        public function addUsername()
+    
     }
