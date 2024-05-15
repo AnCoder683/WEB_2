@@ -14,7 +14,6 @@
     <!-- my css -->
     <link rel="stylesheet" href="<?= BASE_ASSETS ?>/css/style.css">
     <link rel="shortcut icon" href="<?= BASE_ASSETS ?>/img/favicon.webp" type="image/x-icon">
-    
     <!-- js library-->
     <script src="<?= BASE_ASSETS?>/js/bootstrap.bundle.min.js"></script>
     <script src="<?= BASE_ASSETS?>/js/jquery-3.7.1.js"></script>
