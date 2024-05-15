@@ -62,10 +62,10 @@
             </a>
             <ul id="product" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                 <li class="sidebar-item">
-                    <a href="#!product" class="sidebar-link">Quản Lý Sản Phẩm</a>
+                    <a onclick="setcurrentpage(sanpham)" href="<?php echo BASE_URL?>/sanpham/danhsach  " class="sidebar-link">Quản Lý Sản Phẩm</a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">Thêm Sản Phẩm</a>
+                    <a href="<?= BASE_URL?>/sanpham/them" class="sidebar-link">Thêm Sản Phẩm</a>
                 </li>
             </ul>
         </li>
