@@ -1,4 +1,4 @@
-<header class="w-100 py-2 text-bg-danger bg-black">
+<header class="headeradmin w-100 py-2 text-bg-danger">
     <div class="container">
         <div class="d-flex align-items-center justify-content-end gap-4">
             <button type="button" class="btn btn-sm btn-outline-light position-relative">
@@ -20,13 +20,13 @@
             <div class="dropdown">
                 <span class="dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img src="./src/assets/img/avatar.jpg" class="img-fluid rounded-circle" width="40px">
+                    <img src="<?php echo BASE_ASSETS?>/img/avatar.jpg" class="img-fluid rounded-circle" width="40px">
                     <span>Xin Chào, Admin</span>
                 </span>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Thông Tin Cá Nhân</a></li>
                     <li><a class="dropdown-item" href="#">Đổi Mật Khẩu</a></li>
-                    <li><a class="dropdown-item" ng-click="logout()">Đăng Xuất</a></li>
+                    <li><a class="dropdown-item" href="<?= BASE_URL?>/auth/logout" onclick="return confirmLogout()">Đăng Xuất</a></li>
                 </ul>
             </div>
         </div>

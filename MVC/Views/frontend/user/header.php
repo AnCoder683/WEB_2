@@ -27,20 +27,21 @@
             <div class="container">
                 <div class="row align-items-center">
                     <a href="index.html" class="col-3">
-                        <img src="<?php echo BASE_ASSETS ?>/img copy/icon/logo.svg" class="img-fluid" />
+                        <img src="<?php echo BASE_ASSETS?>/img/icon/logo.svg" class="img-fluid" />
                     </a>
+
                     <div ng-controller="SearchController" class="col-6 position-relative">
-                        <div class="form-search container-fluid position-relative">
-                            <input id="find" name="findSanPham" value="<?php if(isset($_POST['findSanPham'])){echo $_POST['findSanPham'];}?>" type="text" class="form-control search-box" ng-model="searchText"
+                        <form class="form-search container-fluid position-relative">
+                            <input type="text" class="form-control search-box" ng-model="searchText"
                                 placeholder="Tìm Kiếm Sản Phẩm . . ." ng-change="search()">
 
-                            <button id="searchBtn" type="submit" class="btn btn-danger position-absolute top-0 end-0">
+                            <button type="submit" class="btn btn-danger position-absolute top-0 end-0">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
-                        </div>
+                        </form>
 
-                        <!-- <div class="search-result position-absolute bottom--1 z-2 rounded-3 border shadow-sm bg-white w-100"
-                            ng-show="searchText && searchResults.length > 0"> -->
+                        <div class="search-result position-absolute bottom--1 z-2 rounded-3 border shadow-sm bg-white w-100"
+                            ng-show="searchText && searchResults.length > 0">
                             <!-- Hiển thị kết quả tìm kiếm -->
                             <!-- <table class="table table-striped mb-0">
                                 <tbody>
@@ -56,36 +57,35 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
-                        </div> -->
+                            </table> -->
+                        </div>
 
-                        <!-- <div class="search-result position-absolute bottom--1 z-2 rounded-3 border shadow-sm bg-white w-100"
+                        <div class="search-result position-absolute bottom--1 z-2 rounded-3 border shadow-sm bg-white w-100"
                             ng-show="searchText && searchResults.length == 0">
-                            <div class="text-center p-3">
+                            <!-- <div class="text-center p-3">
                                 Không tìm thấy sản phẩm
-                            </div>
-                        </div> -->
+                            </div> -->
+                        </div>
                     </div>
 
 
                     <div class="group-icon col-3 d-flex align-items-center justify-content-end gap-4">
                         <div class="position-relative">
-                            <!-- sửa lại -->
-                            <div class="cart-js" data-idkhachhang="kh1" href="">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-cart.svg" class="img-fluid icon-size-custom" />
-                            </div>
+                            <a href="#!cart">
+                                <img src="<?php echo BASE_ASSETS?>/img/icon/icon-cart.svg" class="img-fluid icon-size-custom" />
+                            </a>
                         </div>
 
                         <div class="icon-tracking">
-                            <div href="#!lookup">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-tracking.svg" class="img-fluid icon-size-custom" />
-                            </div>
+                            <a href="#!lookup">
+                                <img src="./src/assets/img/icon/icon-tracking.svg" class="img-fluid icon-size-custom" />
+                            </a>
                         </div>
 
                         <div class="dropdown" ng-show="!isLogin">
                             <div class="cursor-pointer dropdown-toggle d-flex align-items-center gap-1" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-user.svg" class="img-fluid icon-size-custom" />
+                                <img src="./src/assets/img/icon/icon-user.svg" class="img-fluid icon-size-custom" />
                                 <span>Tài Khoản</span>
                             </div>
 
@@ -98,9 +98,8 @@
                         <div class="dropdown" ng-show="isLogin">
                             <div class="cursor-pointer dropdown-toggle d-flex align-items-center gap-1" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-user.svg" class="img-fluid icon-size-custom" />
-                                <!-- <span>{{ name }}</span> -->
-                                <span >Trần Đức An</span>
+                                <img src="./src/assets/img/icon/icon-user.svg" class="img-fluid icon-size-custom" />
+                                <span>{{ name }}</span>
                             </div>
 
                             <ul class="dropdown-menu">
@@ -226,25 +225,6 @@
         </div>
     </div>
 </section>
-
-<script src="http://localhost/BEW/MVC/ajax/jquery-3.7.1.min.js"></script>
-
-<script>
-     $(document).ready(function(){
-        $('.cart-js').on('click', function(){
-                showCart();   
-            });
-            function showCart() {
-                let getIdKhachHang = document.querySelector('.cart-js').dataset.idkhachhang;
-               
-                $.post("http://localhost/BEW/cart/showCart", {
-                    idKhachHang: getIdKhachHang,
-                }, function(data){
-                    $('.body').html(data);
-                });
-            }
-        });
-</script>
 
 <script>
 </script>

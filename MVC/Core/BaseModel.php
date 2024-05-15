@@ -1,12 +1,11 @@
 <?php
     class BaseModel extends Database{
-        public $connect;
+        private $connect;
         public function __construct()
         {
             $this->connect = $this->connectDatabase();
             // dòng này để lấy và up dữ liệu tiếng việt
             $this->_query("SET NAMES 'utf8'");
-
         }
         public function getOrderBy($table, $column, $order, $limit){
             $columnToString = implode(', ', $column);
@@ -27,7 +26,7 @@
             $pk = $this->_getPK($table);
             $sql = "SELECT * FROM $table WHERE $pk = '$id'";
             $query = $this->_query($sql);
-            return $this->_getObjData($query);
+            return $this->_getArrayData($query);
         }
 
         public function insert($table, $data){
@@ -38,9 +37,9 @@
             }
             $vals = implode(', ', $arrayVal);
             $sql = "INSERT INTO $table($cols) VALUES($vals)";
-            $this->_query($sql);
+            return $this->_query($sql);
         }
-
+        
         public function update($table, $data, $id){
             $pk = $this->_getPK($table);
             $setArr = [];
@@ -48,31 +47,35 @@
                 array_push($setArr, "$key = '$value'");
             }
             $setArrToString = implode(', ', $setArr);
-            $sql = "UPDATE $table SET $setArrToString WHERE $pk = $id";
-            $this->_query($sql);
+            $sql = "UPDATE $table SET $setArrToString WHERE $pk = '$id'";
+            try {
+                $this->_query($sql);
+                return true; // Trả về true nếu không có lỗi xảy ra
+            } catch (Exception $e) {
+                return false; // Trả về false nếu có lỗi xảy ra
+            }
         }
 
         public function delete($table, $id){
             $pk = $this->_getPK($table);
-            $sql = "DELETE FROM $table WHERE $pk = $id";
-            $this->_query($sql);
+            $sql = "DELETE FROM $table WHERE $pk = '$id'";
+            try {
+                $this->_query($sql);
+                return true; // Trả về true nếu không có lỗi xảy ra
+            } catch (Exception $e) {
+                return false; // Trả về false nếu có lỗi xảy ra
+            }
         }
 
-        public function _getArrayData($query){
+        protected function _getArrayData($query){
             $data = [];
             while($row = mysqli_fetch_assoc($query)){
                 array_push($data, $row);
             }
             return $data;
         }
-
-        public function _getObjData($query){
-            $row = mysqli_fetch_assoc($query);
-            return $row;
-        }
-
         // hàm này lấy pk
-        public function _getPK($table){
+        protected function _getPK($table){
             $sqlID = "SELECT COLUMN_NAME
             FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
             WHERE TABLE_NAME = '$table'
@@ -85,20 +88,32 @@
             }
             return  $arrayPK[0]["COLUMN_NAME"];
         }
-
         // hàm này để đẩy query xuống DB
         public function _query($sql){
             return mysqli_query($this->connect, $sql);
         }
-
-        public function select($sql, $data = array(), $fetchStyle = PDO::FETCH_ASSOC)
-        {
-            $stmt = $this->prepare($sql);
-            foreach ($data as $k => $v) {
-                $stmt->bindParam($k, $v);
-            } 
-            $stmt->execute();
-            return $stmt->fetchAll($fetchStyle);
+        
+        public function insert_getlastId($table, $data) {
+            $cols = implode(', ', array_keys($data));
+            $arrayVal = [];
+            foreach($data as $key => $value){
+                array_push($arrayVal, "'$value'");
+            }
+            $vals = implode(', ', $arrayVal);
+            $sql = "INSERT INTO $table($cols) VALUES($vals)";
+            if ($this->_query($sql)) {
+                return strval(mysqli_insert_id($this->connect));
+            } else {
+                return false;
+            }
         }
-
+        private function escapeString($value) {
+            return mysqli_real_escape_string($this->connect, $value);
+        }
+        public function select($sql)
+        {
+            $query = $this->_query($sql);
+            $data = $this->_getArrayData($query);
+            return $data;
+        }
     }
