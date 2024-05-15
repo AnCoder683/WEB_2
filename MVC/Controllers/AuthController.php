@@ -9,18 +9,24 @@
         {
             if(isset($_POST["username"]) && isset($_POST["password"])){
                 $username = $_POST["username"];
+                $quyen = $this->acountmodel->quyenAcount($username);
                 $password = $_POST["password"];
-                $finduser = $this->acountmodel->findAccount($username, $password);
-                if(!empty($finduser)){
-                    if($finduser[0]['tinhTrang'] === '1'){
-                        $response = ['success' => true, 'redirect' => BASE_URL.'/admin/dashboard'];
-                        $_SESSION['account'] = $finduser[0];
-                    } else {
-                        $response = ['error' => 'Tài khoản của bạn đã bị khóa'];
+                if($quyen[0]["role"] === "user") {
+                    $response = ['error' => 'Tài khoản của bạn không đủ thẩm quyền'];
+                } else {
+                    $finduser = $this->acountmodel->findAccount($username, $password);
+                    if(!empty($finduser)){
+                        if($finduser[0]['tinhTrang'] === '1'){
+                            $response = ['success' => true, 'redirect' => BASE_URL.'/admin/dashboard'];
+                            $_SESSION['account'] = $finduser[0];
+                        } else {
+                            $response = ['error' => 'Tài khoản của bạn đã bị khóa'];
+                        }
+                    } else{
+                        $response = ['error' => 'Tên đăng nhập hoặc mật khẩu không đúng'];
                     }
-                } else{
-                    $response = ['error' => 'Tên đăng nhập hoặc mật khẩu không đúng'];
                 }
+                
             } else {
                 $response = ['error' => 'Vui lòng nhập đầy đủ thông tin'];
             }

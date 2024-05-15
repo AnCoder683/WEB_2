@@ -20,6 +20,7 @@
     <script src="<?= BASE_ASSETS?>/js/jquery-3.7.1.js"></script>
     <!-- my js -->
     <script src="<?= BASE_ASSETS?>/js/script.js"></script>
+    <script src="<?= BASE_ASSETS?>/js/PaginationAdmin.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -42,5 +43,6 @@
 </body>
     <script src="<?= BASE_ASSETS?>/js/loadpermission.js"></script>
     <script src="<?= BASE_ASSETS?>/js/Account.js"></script>
+    <script src="<?= BASE_ASSETS?>/js/danhmucsanpham.js"></script>
 </html>
 

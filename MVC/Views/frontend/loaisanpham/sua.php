@@ -3,7 +3,12 @@
         <h5 class="mb-0 fw-semibold">Sửa loại Sản Phẩm</h4>
     </div>
     <div class="px-5">
-        <form class="mt-5" action="<?= BASE_URL?>/loaisanpham/xuly/<?= $id?>" method="post">
+        <div class="d-flex justify-content-between align-items-center mt-5">
+            <a href="<?php echo BASE_URL?>/loaisanpham/" class="btn btn-danger">DS loại sản phẩm
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+        <form class="mt-5" id="formSuaLoaiSanPham">
             <table class="table" width="50%" style="border-collapse: collapse;">
                 <tr>    
                     <th>Thông tin</th>
@@ -12,9 +17,16 @@
                     foreach ($data as $key => $value) {
                 ?>
                 <tr>
+                    <td>Id loại sản phẩm: </td>
+                    <td><input type="text" name="idLoaiSanPham" value="<?= $value['idLoaiSanPham']?>" readonly></td>
+                </tr>
+                <tr>
+                    
                     <td>Tên loại sản phẩm: </td>
                     <td><input type="text" name="tenLoai" value="<?= $value['tenLoai']?>"></td>
                 </tr>
+                
+                
                 <tr>
                     <td>Tình trạng: </td>
                     <td>
@@ -37,6 +49,7 @@
                         ?>
                     </td>
                 </tr>
+                <input type="hidden" name="action" value="sualoaisanpham">
                 <tr>
                     <td></td>
                     <td colspan="2"><button type="submit mt-3" class="btn btn-danger" name="sualoaisanpham">Sửa</button></td>
@@ -47,18 +60,4 @@
             </table>
         </form>
     </div>
-    <?php 
-        if(isset($_SESSION['success'])){
-            // Lấy giá trị của success từ session
-            $success = $_SESSION['success'];
-            // Sau khi sử dụng giá trị success, bạn có thể xóa nó khỏi session nếu cần
-            unset($_SESSION['success']);
-            // Sử dụng giá trị của success theo nhu cầu của bạn
-            if($success === 'true'){
-                echo '<script>showAlert("Thành công!", "success");</script>';
-            } else {
-                echo '<script>showAlert("Thất bại!", "danger");</script>';
-            }
-        } 
-    ?>
 </div>

@@ -14,6 +14,7 @@
             $sql = "SELECT * FROM taikhoan tk
             JOIN quyen ON quyen.idQuyen = tk.idQuyen
             WHERE tenDangNhap = '$username' 
+            LIMIT 1
             ";
             return $this->select($sql);
         }
@@ -57,6 +58,7 @@
             if($loaitaikhoan[0]['loaitaikhoan'] == "nhanvien"){
                 $sql = "SELECT * FROM nhanvien nv 
                 JOIN taikhoan ON taikhoan.tendangnhap = nv.idNhanVien
+                JOIN quyen ON taikhoan.idQuyen = quyen.idQuyen
                 WHERE nv.idNhanVien = '$username'";
                 return $this->select($sql);
             }

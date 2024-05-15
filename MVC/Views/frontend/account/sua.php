@@ -35,21 +35,30 @@
                         </div>
                         <div class="col-12 mb-4">
                             <label for="role" class="form-label">Uỷ Quyền</label>
-                            <select name="role" id="role" class="form-select">
-                                <?php foreach($listquyen as $key2 => $value2) { 
-                                    if($value2['muc_uu_tien'] > $level) {
-                                        if($value['idQuyen'] == $value2['idQuyen']) {?>
+                            <?php 
+                                $read = "";
+                                if($value['muc_uu_tien'] <= $level) {
+                                    $read = "readonly";
+                                }
+                            ?>
+                            <select name="role" id="role" class="form-select" <?= $read?>>
+                                <?php
+                                foreach($listquyen as $key2 => $value2) { 
+                                        if($value['idQuyen'] == $value2['idQuyen']) {
+                                            if($value2['muc_uu_tien'] > $level) {
+                                                $read = "readonly";
+                                            }
+                                ?>     
                                             <option value="<?= $value2['idQuyen']?>" selected><?= $value2['quyen']?></option>
                                 <?php   } else{
                                             echo "<option value=".$value2['idQuyen'].">".$value2['quyen']."</option>";
                                         }
-                                    }
                                 }?>
                             </select>
                         </div>
                         <div class="col-12 mb-4">
                             <button type="submit" class="btn btn-danger">Lưu Thay Đổi</button>
-                            <a href="#!/user" class="btn btn-secondary">Hủy</a>
+                            <a href="<?= BASE_URL."/Account/danhsach"?>" class="btn btn-secondary">Hủy</a>
                         </div>
                     </form>
                     <?php }?>
