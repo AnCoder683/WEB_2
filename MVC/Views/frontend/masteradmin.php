@@ -1,7 +1,3 @@
-<?php
-    include("./MVC/middlewares/check_adminlogin.php");
-    adminpermission();
-?>
 <!DOCTYPE html>
 <html lang="en" ng-app="TokyoLife">
 <head>
