@@ -12,11 +12,14 @@
             $this->chitietcartModel = $this->model("ChitietcartModel");
         }
 
+
+
         public function addToCart(){
-            $idSanPham = isset($_POST['idSanPham'])?$_POST['idSanPham']:'Nothing';
-            $sanPhamQuantity = isset($_POST['sanPhamQuantity']) && !$_POST['sanPhamQuantity'] == ''?$_POST['sanPhamQuantity']:1;
-            $idChiTietSanPham = isset($_POST['idChiTietSanPham'])?$_POST['idChiTietSanPham']:'Nothing';
-            $this->chitietcartModel->themChiTietGioHang($sanPhamQuantity, $idChiTietSanPham, $idGioHang = 1);
+            $idToCart = $_POST['idToCart'];
+            $sanPhamQuantity = $_POST['sanPhamQuantity'];
+            $idKH = $_POST['idKH'];
+            $idGioHang = $this->cartModel->getIdCartByIdUser($idKH)[0];
+            $this->chitietcartModel->themChiTietGioHang($sanPhamQuantity, $idToCart, $idGioHang);
         }
 
         public function showCart(){
