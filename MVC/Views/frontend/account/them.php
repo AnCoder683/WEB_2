@@ -73,3 +73,19 @@
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("username").addEventListener("input", function(event) {
+    var username = event.target.value;
+    if (containsVietnamese(username)) {
+        event.target.value = removeVietnamese(username);
+    }
+    });
+
+function containsVietnamese(str) {
+    return /[^\x00-\x7F]+/.test(str);
+}
+
+function removeVietnamese(str) {
+    return str.replace(/[^\x00-\x7F]+/g, '');
+}
+</script>

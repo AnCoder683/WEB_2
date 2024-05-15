@@ -65,7 +65,7 @@ async function validateUsername() {
     }
 }
 
-async function validation() {
+async function validationAccount() {
     block = true;
     var name = document.getElementById("name").value;
     if(username === "") {
@@ -113,7 +113,7 @@ async function validation() {
 }
 $('#addAccountForm').submit(function(event) {
     event.preventDefault();
-    val = validation();
+    val = validationAccount();
     if(val === false) {
         return;
     }
@@ -132,18 +132,3 @@ $('#addAccountForm').submit(function(event) {
         },
     });
 });
-
-document.getElementById("username").addEventListener("input", function(event) {
-    var username = event.target.value;
-    if (containsVietnamese(username)) {
-        event.target.value = removeVietnamese(username);
-    }
-});
-
-function containsVietnamese(str) {
-    return /[^\x00-\x7F]+/.test(str);
-}
-
-function removeVietnamese(str) {
-    return str.replace(/[^\x00-\x7F]+/g, '');
-}

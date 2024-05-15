@@ -1,13 +1,10 @@
 <?php 
     class ChitietsanphamModel extends BaseModel 
     {
+        const table = "chitietsanpham";
         public function __construct()
         {
             parent::__construct();
-        }
-        public function index()
-        {
-
         }
         public function getChitietsanpham($id)
         {
@@ -36,6 +33,22 @@
             ORDER BY 
                 sp.idSanPham DESC";
             return $this->select($sql);
+        }
+
+        public function getdatamau()
+        {
+            $sql = 'SELECT * FROM mau';
+            return $this->select($sql);
+        }
+
+        public function getdatasize()
+        {
+            $sql = 'SELECT * FROM `size`';
+            return $this->select($sql);
+        }
+
+        public function themchitiet($variant) {
+            $this->insert(self::table, $variant);
         }
     }
 ?>

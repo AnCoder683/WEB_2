@@ -51,24 +51,25 @@
         public function them()
         {
             $loaisanpham = $_POST['tenLoai'];
+            $tinhtrang = $_POST['tinhtrang'];
             $data = [
                 'tenLoai'=> $loaisanpham,
-                'tt_xoa' => '1'
+                'tt_xoa' => $tinhtrang
             ];
-            if(isset($_POST['themloaisanpham'])){
-                $success = '';
+            if(isset($_POST['action']) && $_POST['action'] === 'themloaisanpham'){
                 $result = $this->loaisanphammodel->add_loaisanpham($data);
-                if($result == null){
-                    $success = 'true';
+                if($result === true){
+                    $reponse = ["result" => true, "message" => "Thêm loại sản phẩm thành công"];
                 }else {
-                    $success = 'false';
+                    $reponse = ["result" => false, "message" => "Thêm loại sản phẩm thất bại"];
                 }
-                $_SESSION['success'] = $success;
-                header("Location: ".BASE_URL."/loaisanpham/themloaisanpham");
+            } else {
+                $reponse = ["result"=> false,"message"=> "Không nhận được thêm"];
             }
+            echo json_encode($reponse);
         }
 // sửa và xóa
-        public function xuly($id)
+        public function sua()
         {
             $loaisanpham = $_POST['tenLoai'];
             $tinhtrang = $_POST['tinhtrang'];
@@ -76,22 +77,33 @@
                 'tenLoai'=> $loaisanpham,
                 'tt_xoa' => $tinhtrang
             ];
-            if(isset($_POST['sualoaisanpham'])){
-                $success = '';
+            $id = $_POST['idLoaiSanPham'];
+            if(isset($_POST['action']) && $_POST['action'] === 'sualoaisanpham'){
                 $result = $this->loaisanphammodel->update_loaisanpham($data, $id);
-                if($result == null){
-                    $success = 'true';
+                if($result === true){
+                    $reponse = ["result" => true, "message" => "Sửa loại sản phẩm thành công"];
                 }else {
-                    $success = 'false';
+                    $reponse = ["result" => false, "message" => "Sửa loại sản phẩm thất bại"];
                 }
-                $_SESSION['success'] = $success;
-                header("Location: ".BASE_URL."/loaisanpham/sualoaisanpham/".$id);
+            } else {
+                $reponse = ["result"=> false,"message"=> "Không nhận được Sửa"];
             }
-            else{
-                // $id = $_GET['id'];
-                // $sql_xoa = "DELETE FROM loaisanpham WHERE idLoaiSanPham = '$id'";
-                // $conn->query($sql_xoa);
-                // header('Location:../../../index.php?action=quanlydanhmucsanpham&query=them');
+            echo json_encode($reponse);
+        }
+
+        public function xoa($id)
+        {
+            $check = $this->loaisanphammodel->exist_insanpham($id);
+            if(!empty($check)){
+                $reponse = ["result"=> false,"message"=> "Tồn tại sản phẩm có danh mục này"];
+            } else{
+                $result = $this->loaisanphammodel->delete_loaisanpham($id);
+                if($result === true){
+                    $reponse = ["result"=> true,"message"=> "Xóa loại sản phẩm thành công"];
+                } else{
+                    $reponse = ["result"=> false,"message"=> "Xóa thất bại"];
+                }
             }
+            echo json_encode($reponse);
         }
     }

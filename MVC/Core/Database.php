@@ -12,4 +12,15 @@
             }
             return false;
         }
+
+        protected function _query($sql) {
+            $result = $this->connectDatabase()->query($sql);
+            if ($result === TRUE) {
+                return $this->connectDatabase()->insert_id; // Return the last inserted ID for insert queries
+            } elseif ($result) {
+                return $result; // Return result set object for other queries
+            } else {
+                throw new Exception("Database query error: " . $this->connectDatabase()->error);
+            }
+        }
     }

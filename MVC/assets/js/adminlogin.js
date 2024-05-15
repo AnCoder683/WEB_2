@@ -1,9 +1,11 @@
 $("#loginform").submit(function (event) {
     event.preventDefault();
+    var formData = $(this).serializeArray();
+    formData.push({name: 'action', value: 'themloaisanpham'});
     $.ajax({
         type: 'POST',
         url: BASE_URL+'/auth/loginhandle', // Đường dẫn tới trang quản trị
-        data: $(this).serializeArray(),
+        data: formData,
         success: function (response) {
             // Xử lý phản hồi từ server
             response = JSON.parse(response);
