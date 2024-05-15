@@ -2,36 +2,82 @@
     class AcountModel extends BaseModel
     {
         const TABLE = "taikhoan";
-
-        public function findUsername($username)
+        public function findAccount($username, $password)
         {
+            $sql = "SELECT * FROM taikhoan 
+            JOIN quyen ON quyen.idQuyen = taikhoan.idQuyen
+            WHERE tenDangNhap = '$username' AND matKhau = '$password'";
+            return $this->select($sql);
+        }
+        public function quyenAcount($username)
+        {
+            $sql = "SELECT * FROM taikhoan tk
+            JOIN quyen ON quyen.idQuyen = tk.idQuyen
+            WHERE tenDangNhap = '$username' 
+            LIMIT 1
+            ";
+            return $this->select($sql);
+        }
+        public function listAcount()
+        {
+            $sql = "SELECT * FROM taikhoan tk INNER JOIN quyen ON tk.idQuyen = quyen.idQuyen;";
+            return $this->select($sql);
+        }
+        public function listquyen()
+        {
+            $sql = "SELECT * FROM quyen";
+            return $this->select($sql);
+        }
+        public function getPermission($username)
+        {
+            $sql = "SELECT tenchucnang, tinhtrang FROM taikhoan tk
+            JOIN quyen ON quyen.idQuyen = tk.idQuyen
+            JOIN ctq_cn ON ctq_cn.idQuyen = quyen.idQuyen
+            JOIN chucnang ON chucnang.idChucNang = ctq_cn.idChucNang
+            WHERE tenDangNhap = '$username'";
+            return $this->select($sql);
+        }
+        public function checkloaitaikhoan($username)
+        {
+            $sql = "SELECT 
+            CASE 
+                WHEN EXISTS (SELECT * FROM nhanvien WHERE idNhanVien = '$username') THEN 'nhanvien'
+                WHEN EXISTS (SELECT * FROM khachhang WHERE idKhachHang = '$username') THEN 'khachhang'
+                ELSE 'none'
+            END AS loaitaikhoan";
+            $loaitaikhoan = $this->select($sql);
+            return $loaitaikhoan;
+        }
+        public function checkUsername($username){
             $sql = "SELECT * FROM taikhoan WHERE tenDangNhap = '$username'";
             return $this->select($sql);
         }
-        // public function findById($table, $id){
-        //     $pk = $this->_getPK($table);
-        //     $sql = "SELECT * FROM $table WHERE $pk = $id";
-        //     $query = $this->_query($sql);
-        //     return mysqli_fetch_assoc($query);
-        //  }
-
-        public function getDetailInfo($username){
-            $sql = "SELECT * FROM taikhoan tk JOIN khachhang kh ON kh.idKhachHang = tk.tenDangNhap where tenDangNhap = '$username'";
-            return $this->select($sql);
-        }
-
-        public function insertUsername($username, $password, $tinhtrang, $quyen, $fullname, $phone, $email, $gender){
-            $query_taikhoan = "INSERT INTO taikhoan (tenDangNhap, MatKhau, tinhTrang, idQuyen) VALUES ('$username', '$password', '$tinhtrang', '$quyen')";
-            $query_khachhang = "INSERT INTO khachhang (idKhachHang, ten, SDT, email, gioiTinh, ngaySinh, diaChiGiaoHang) VALUES ('$username', '$fullname', '$phone', '$email', '$gender', '', '')";
-            if($this->_query($query_taikhoan)){
-                return $this->_query($query_khachhang);
+        public function thongtintaikhoan($username)
+        {
+            $loaitaikhoan = $this->checkloaitaikhoan($username);
+            if($loaitaikhoan[0]['loaitaikhoan'] == "nhanvien"){
+                $sql = "SELECT * FROM nhanvien nv 
+                JOIN taikhoan ON taikhoan.tendangnhap = nv.idNhanVien
+                JOIN quyen ON taikhoan.idQuyen = quyen.idQuyen
+                WHERE nv.idNhanVien = '$username'";
+                return $this->select($sql);
             }
+            return $this->findById("khachhang", $username);
+        }
+        public function updateAccount($data, $id)
+        {
+            return $this->update(self::TABLE, $data, $id);
         }
 
-        public function updateUserInformation($fullname, $phone, $email, $gender, $birthday, $address, $username){
-            $gender = ($gender === 'Nam') ? 1 : 0;
-            $sql = "UPDATE khachhang SET ten = '$fullname', SDT = '$phone', email = '$email', gioiTinh = '$gender', ngaySinh = '$birthday', diaChiGiaoHang = '$address' WHERE idKhachHang = '$username'";
-            return $this->_query($sql);
+        public function themAccount($data) {
+            return $this->insert(self::TABLE, $data);
+        }
+
+        public function themKhachHang($data) {
+            return $this->insert("khachhang", $data);
+        }
+
+        public function themNhanVien($data) {
+            return $this->insert("nhanvien", $data);
         }
     }
-?>
