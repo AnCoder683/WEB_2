@@ -1,5 +1,5 @@
 <?php 
-    define("BASE_URL","http://localhost/WEB_2");
-    define("BASE_ASSETS","http://localhost/WEB_2/MVC/assets");
-    define("BASE_VIEWS","http://localhost/WEB_2/MVC/views");
-    define("product_per_page", 3);
+    define("BASE_URL","http://localhost/BEW");
+    define("BASE_ASSETS","http://localhost/BEW/MVC/assets");
+    define("BASE_VIEWS","http://localhost/BEW/MVC/views");
+?>
