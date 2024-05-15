@@ -7,6 +7,7 @@
         protected $controller = 'HomeController';
         protected $action = 'index';
         protected $params = [];
+
         public function __construct()
         {
             //admincontroller/
@@ -33,7 +34,9 @@
             }
             // xu ly param
             $this->params = $arr?array_values($arr):[];
+
             $controllerObj = new $this->controller;
+    
             call_user_func_array([$controllerObj, $this->action], $this->params);
         }
         // xu ly cai URL

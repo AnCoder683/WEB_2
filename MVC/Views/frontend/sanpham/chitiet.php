@@ -1,71 +1,72 @@
-<div class="content">
-    <div class="shadow-sm px-5 py-3 shadow-lg">
-        <h5 class="mb-0 fw-semibold">Quản Lý Sản Phẩm</h5>
-    </div>
-
-    <div class="px-5">
-        <div class="d-flex justify-content-between align-items-center mt-5">
-            <a href="#!user/add" class="btn btn-danger">Thêm Sản Phẩm Mới
-                <i class="fas fa-plus"></i>
+<p>Chi tiết sản phẩm</p>
+<?php 
+    $id = $_GET['id'];
+    $sql_lietke_sp = "SELECT 
+    sp.idSanPham,
+    sp.tenSanPham,
+    sp.giaSanPham,
+    sp.moTa,
+    sp.tt_xoa,
+    mau.tenMau,
+    loaisanpham.tenLoai,
+    size.tenSize,
+    chitiet.imgPath AS detailImgPath,
+    chitiet.idchitietsanpham AS idchitiet
+FROM 
+    sanpham sp
+JOIN 
+    chitietsanpham chitiet ON sp.idSanPham = chitiet.idSanPham
+JOIN 
+    mau ON chitiet.idMau = mau.idMau
+JOIN 
+    size ON chitiet.idSize = size.idSize
+JOIN
+	loaisanpham ON loaisanpham.idLoaiSanPham = sp.idLoaiSanPham
+WHERE sp.idSanPham = '$id'
+ORDER BY 
+    sp.idSanPham DESC";
+    $result = $conn->query($sql_lietke_sp);
+?>
+<table class="table" width="50%" style="border-collapse: collapse;">
+    <tr>
+        <th>STT</th>
+        <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th>Mô tả</th>
+        <th>Giá sản phẩm</th>
+        <th>Loại sản phẩm</th>
+        <th>Màu</th>
+        <th>Size</th>
+        <th>Hình ảnh</th>
+        <th>Tình trạng</th>
+        <th>Quản lý</th>
+    </tr>
+<?php
+    $i = 0;
+    while($row = mysqli_fetch_array($result)) {
+        $i++;
+?>
+    <tr>
+        <td><?php echo $i?></td>
+        <td><?php echo $row['idSanPham']?></td>
+        <td><?php echo $row['tenSanPham']?></td>
+        <td><?php echo $row['moTa']?></td>
+        <td><?php echo $row['giaSanPham']?></td>
+        <td><?php echo $row['tenLoai']?></td>
+        <td><?php echo $row['tenMau']?></td>
+        <td><?php echo $row['tenSize']?></td>
+        <td><img src="FE/img/uploads/<?php echo $row['detailImgPath']?>" 
+        alt="Ảnh sản phẩm" width="100" height="100"> </td>
+        <td><?php echo $row['tt_xoa']?></td>
+        <td>
+            <a href="?action=chitietsanpham&query=sua&id=<?php echo $row['idchitiet']?>">
+            Sửa</a> |
+            <a href="FE/modules/chitietsanpham/xuly.php?id=<?php echo $row['idSanPham']?>">
+            Xóa
             </a>
-        </div>
-
-        <table id="productTable" class="table h-50" width="50%" style="border-collapse: collapse;">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Mã sản phẩm</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Mô tả</th>
-                    <th>Giá sản phẩm</th>
-                    <th>Số lượng trong kho</th>
-                    <th>Loại sản phẩm</th>
-                    <th>Hình ảnh</th>
-                    <th>Tình trạng</th>
-                    <th>Quản lý</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- <?php
-                    $i = 0;
-                    foreach ($data as $key => $value) {
-                        $i++;
-                ?>
-                    <tr>
-                        <td><?= $i?></td>
-                        <td><?= $value['idSanPham']?></td>
-                        <td><?= $value['tenSanPham']?></td>
-                        <td><?= $value['moTa']?></td>
-                        <td><?= $value['giaSanPham']?></td>
-                        <td><?= $value['soLuongTrongKho']?></td>
-                        <td><?= $value['tenLoai']?></td>
-                        <td><img src="<?= BASE_ASSETS?>/img/uploads/<?= $value['img']?>" alt="Hình ảnh sản phẩm" width="80" height="120"></td>
-                        <td><?= $value['tt_xoa']?></td>
-                        <td>
-                            <a href="?action=quanlysanpham&query=sua?id=<?= $value['idSanPham']?>">
-                            Sửa</a> |
-                            <a href="FE/modules/quanlysanpham/xuly.php?query=xoa?id=<?= $value['idSanPham']?>">
-                            Xóa
-                            </a> |
-                            <a href="<?= BASE_URL?>/chitietsanpham/chitiet/<?= $value['idSanPham']?>">
-                            Chi tiết
-                            </a> 
-                        </td>
-                    </tr>
-                <?php
-                    }
-                ?>   -->
-            </tbody>
-        </table>
-
-        <div class=" w-100 d-flex align-items-center justify-content-center mt-3">
-            <nav aria-label="Page navigation">
-                <ul class="pagination pagination-danger">
-                    <li class="page-item">
-                        <a href="" class="page-link">{{ page }}</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-</div>
+        </td>
+    </tr>
+<?php
+}
+?>
+</table>

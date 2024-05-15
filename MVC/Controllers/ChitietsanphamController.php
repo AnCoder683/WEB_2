@@ -1,22 +1,11 @@
 <?php
     class ChitietsanphamController extends BaseController{
-        private $chitietsanphammodel;
-
+        private $sanphamModel;
         public function __construct()
         {
-            $this->chitietsanphammodel = $this->model("ChitietsanphamModel");
+            $this->sanphamModel = $this->model('SanphamModel');
         }
-        public function index(){
+        public function showChitietSanPham(){
             
-        }
-        public function chitiet($id)
-        {
-            $data = $this->chitietsanphammodel->getChitietsanpham($id);
-            $this->view("frontend.masteradmin", [
-                "content"=> "chitietsanpham/lietke",
-                "header"=> "admin/header",
-                "sidebar"=> "admin/sidebar",
-                "data" => $data
-            ]);
         }
     }
