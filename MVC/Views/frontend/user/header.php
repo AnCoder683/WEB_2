@@ -71,7 +71,7 @@
                     <div class="group-icon col-3 d-flex align-items-center justify-content-end gap-4">
                         <div class="position-relative">
                             <!-- sửa lại -->
-                            <div class="cart-js" data-idkhachhang="kh1" href="">
+                            <div class="cart-js" data-idkhachhang="kh123" href="">
                                 <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-cart.svg" class="img-fluid icon-size-custom" />
                             </div>
                         </div>

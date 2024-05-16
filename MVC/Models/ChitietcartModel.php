@@ -2,8 +2,8 @@
     class ChitietcartModel extends BaseModel{
         const TABLE = 'chitietgiohang';
 
-        public function kiemTraTonTai($idChiTietSanPham) {
-            $sql = "SELECT COUNT(*) as count FROM chitietgiohang WHERE idChiTietSanPham = '$idChiTietSanPham'";
+        public function kiemTraTonTai($idChiTietSanPham, $idGioHang) {
+            $sql = "SELECT COUNT(*) as count FROM chitietgiohang WHERE idChiTietSanPham = '$idChiTietSanPham' AND idGioHang = '$idGioHang'";
             $result = $this->_query($sql);
             $row = mysqli_fetch_assoc($result);
             $count = $row['count'];
@@ -12,13 +12,14 @@
         
 
         public function themChiTietGioHang($soLuong, $idChiTietSanPham, $idGioHang){
-            if($this->kiemTraTonTai($idChiTietSanPham)){
-                $sql = "UPDATE chitietgiohang SET soLuong = soLuong + $soLuong WHERE idChiTietSanPham = '$idChiTietSanPham'";
+            if($this->kiemTraTonTai($idChiTietSanPham, $idGioHang)){
+                $sql = "UPDATE chitietgiohang SET soLuong = soLuong + $soLuong WHERE idChiTietSanPham = '$idChiTietSanPham' AND idGioHang = '$idGioHang'";
             }else{
                 $sql = "INSERT INTO chitietgiohang (soLuong, idChiTietSanPham, idGioHang) 
                 VALUES ($soLuong, '$idChiTietSanPham', $idGioHang)";
             }
             // die($sql);
+
             $this->_query($sql);
         }
 
@@ -34,5 +35,17 @@
                 array_push($data, $row);
             }
             return $data;
+        }
+
+        public function delChiTiet($idChiTiet, $idGioHang){
+            $sql = "DELETE FROM chitietgiohang WHERE idChiTietSanPham = '$idChiTiet' AND idGioHang = '$idGioHang'";
+            $this->_query($sql);
+        }
+
+        public function delAllChiTiet($a){
+            $sql = "DELETE FROM chitietgiohang WHERE idGioHang = '$a'";
+            // die($sql);
+            $this->_query($sql);
+
         }
     }

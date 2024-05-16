@@ -75,7 +75,6 @@
                 }
             }
 
-
             $dataSanPham = $this->sanphammodel->getSanPhamById($id); 
             $dataChiTietSanPham = $this->chitietsanphamModel->getChiTietSanPhamByIdSanPham($id);
             $dataMau = [];

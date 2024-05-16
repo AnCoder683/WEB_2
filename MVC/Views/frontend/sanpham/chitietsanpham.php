@@ -327,24 +327,24 @@
         
         $(document).ready(function(){
             $('.addToCart-js').on('click', function(){
-                    quantity = $('.count-js').html();
-                    if(quantity !== '0' && quantity !== 'Không còn sản phẩm'){
-                        toCart();
-                    }  
+                quantity = $('.count-js').html();
+                if(quantity !== '0' && quantity !== 'Không còn sản phẩm'){
+                    toCart();
+                    window.location.reload();
+                }  
+            });
+            function toCart() {
+                let pushIdToCart = document.querySelector('.addToCart-js').dataset.idchitietsanpham;
+                let quantity = document.querySelector('#quantity').value;
+                let idKhachHang = document.querySelector('.cart-js').dataset.idkhachhang;
+                $.post("http://localhost/BEW/cart/addToCart", {
+                    idToCart: pushIdToCart,
+                    sanPhamQuantity: quantity,
+                    idKH: idKhachHang
+                }, function(data){
+                    $('.body').html(data);
                 });
-                function toCart() {
-                    let pushIdToCart = document.querySelector('.addToCart-js').dataset.idchitietsanpham;
-                    let quantity = document.querySelector('#quantity').value;
-                    let idKhachHang = 'kh1';
-                    
-                    $.post("http://localhost/BEW/cart/addToCart", {
-                        idToCart: pushIdToCart,
-                        sanPhamQuantity: quantity,
-                        idKH: idKhachHang
-                    }, function(data){
-                        $('.body').html(data);
-                    });
-                }
+            }
             });
             $(document).ready(function(){
             $('#searchBtn').on('click', function(){
