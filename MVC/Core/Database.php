@@ -1,5 +1,5 @@
 <?php
-    class Database{
+    class Database extends PDO{
         const SERVER = 'localhost';
         const USER = 'root';
         const PASS = '';

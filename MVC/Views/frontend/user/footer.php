@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row border-bottom border-dark-subtle py-3 row-gap-5">
             <div class="col-xl-3 col-md-6 col-sm-6 d-flex flex-column align-items-start justify-content-start gap-2">
-                <h6 class="text-left fw-bold">VỀ TOKYO LIFE</h6>
+                <h6 class="text-left fw-bold">VỀ CHÚNG TÔI</h6>
 
                 <div class="group-ft">
                     <span class="d-block fw-light mb-1">Chúng tôi là ai</span>
@@ -41,14 +41,14 @@
                     <div class="group-top">
                         <span class="d-block fw-bold mb-1">Hỗ Trợ Tư Vấn Mua Online</span>
                         <span class="d-block fw-light mb-1">Hotline: 0247 308 2882</span>
-                        <span class="d-block fw-light mb-1">Email: contact@tokyolife.vn</span>
+                        <span class="d-block fw-light mb-1">Email: antran@gmail.vn</span>
                         <span class="d-block fw-light mb-1">Giờ làm việc: 8:30 - 22:00 hằng ngày.</span>
                     </div>
 
                     <div class="group-top mt-3">
                         <span class="d-block fw-bold mb-1">Hỗ Trợ Tư Vấn Bảo Hành Sản Phẩm</span>
                         <span class="d-block fw-light mb-1">Hotline: 024 7300 6999</span>
-                        <span class="d-block fw-light mb-1">Email: cskh@tokyolife.vn</span>
+                        <span class="d-block fw-light mb-1">Email: c@áldfe.vn</span>
                         <span class="d-block fw-light mb-1">Giờ làm việc: 8:30 - 22:00 hằng ngày.</span>
                     </div>
                 </div>
@@ -84,12 +84,11 @@
 
         <div class="row mt-3 justify-content-between flex-column flex-md-row">
             <div class="col-8 ft-left d-flex flex-column  gap-2">
-                <p class="mb-0 fs-6 fw-light"> Địa chỉ: Tầng 6, số 49 Thái Hà Phường Trung Liệt, Quận Đống Đa, Thành
-                    phố Hà Nội, Việt Nam.</p>
-                <p class="mb-0 fs-6 fw-light">Người đại diện: Nguyễn Văn Tiến</p>
-                <p class="mb-0 fs-6 fw-light">Mã số thuế: 0108120341, ngày cấp ĐKKD 5/1/2018. Nơi cấp: Sở kế hoạch
-                    và đầu tư Hà Nội.</p>
-                <p class="mb-0 fs-6 fw-light">Điện thoại: 024.7300.6999 </p>
+                <p class="mb-0 fs-6 fw-light"> Địa chỉ: TPHCM.</p>
+                <p class="mb-0 fs-6 fw-light">Người đại diện: Tran Duc An</p>
+                <p class="mb-0 fs-6 fw-light">Mã số thuế: 123123, ngày cấp ĐKKD 5/1/2024. Nơi cấp: Sở kế hoạch
+                    và đầu tư.</p>
+                <p class="mb-0 fs-6 fw-light">Điện thoại: 0123123123 </p>
             </div>
 
             <div class="col-4 d-flex justify-content-end">
@@ -102,8 +101,7 @@
     <div
         class="copyright text-bg-dark d-flex flex-column flex-md-row align-items-center justify-content-center gap-2 py-1 mt-3">
         <img src="./src/assets/img/icon/footer-logo.webp" alt="">
-        <span>Copyright &copy; 2024 Tran Cong Minh | All Rights Reserved</span>
+        <span>Copyright &copy; 2024 Tran Duc An | All Rights Reserved</span>
     </div>
 
-    
 </footer>

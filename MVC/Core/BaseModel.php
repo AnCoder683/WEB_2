@@ -93,9 +93,12 @@
 
         public function select($sql, $data = array(), $fetchStyle = PDO::FETCH_ASSOC)
         {
-            $query = $this->_query($sql);
-            $data = $this->_getArrayData($query);
-            return $data;
+            $stmt = $this->prepare($sql);
+            foreach ($data as $k => $v) {
+                $stmt->bindParam($k, $v);
+            } 
+            $stmt->execute();
+            return $stmt->fetchAll($fetchStyle);
         }
 
     }
