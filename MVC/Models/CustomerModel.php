@@ -8,6 +8,4 @@
             $sql = "SELECT * FROM taikhoan WHERE tenDangNhap = '$username'";
             return $this->select($sql);
         }
-
-        public function addUsername()
     }
