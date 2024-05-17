@@ -41,21 +41,4 @@
         public function delete_sanpham($id){
             return $this->delete(self::TABLE, $id);
         }
-        public function getAllSanPham($or, $fi = ''){
-            if($or != ''){
-                $sql = "SELECT *
-                FROM sanpham
-                WHERE tenSanPham  LIKE '$fi%'AND tt_xoa = 0
-                ORDER BY $or ";
-            }else{
-                $sql = "SELECT *
-                FROM sanpham
-                WHERE tenSanPham LIKE '$fi%' AND tt_xoa = 0
-                ";
-            }
-            // die($sql);
-            $query = $this->_query($sql);
-            return $this->_getArrayData($query);
-        }
-
     }
