@@ -70,15 +70,16 @@
 
                     <div class="group-icon col-3 d-flex align-items-center justify-content-end gap-4">
                         <div class="position-relative">
-                            <a href="#!cart">
+                            <!-- sửa lại -->
+                            <div class="cart-js" data-idkhachhang="kh123" href="">
                                 <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-cart.svg" class="img-fluid icon-size-custom" />
-                            </a>
+                            </div>
                         </div>
 
                         <div class="icon-tracking">
-                            <a href="#!lookup">
+                            <div href="#!lookup">
                                 <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-tracking.svg" class="img-fluid icon-size-custom" />
-                            </a>
+                            </div>
                         </div>
                         <?php if(!isset($_SESSION['user'])) {?>
                         <div class="dropdown" ng-show="!isLogin">
@@ -223,6 +224,24 @@
     </div>
 </section>
 
+<script src="http://localhost/WEB_2/MVC/ajax/jquery-3.7.1.min.js"></script>
+
+<script>
+     $(document).ready(function(){
+        $('.cart-js').on('click', function(){
+                showCart();   
+            });
+            function showCart() {
+                let getIdKhachHang = document.querySelector('.cart-js').dataset.idkhachhang;
+               
+                $.post("http://localhost/WEB_2/cart/showCart", {
+                    idKhachHang: getIdKhachHang,
+                }, function(data){
+                    $('.body').html(data);
+                });
+            }
+        });
+</script>
 
 <script>
 </script>

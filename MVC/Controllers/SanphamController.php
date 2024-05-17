@@ -2,10 +2,14 @@
     class SanphamController extends BaseController{
         private $sanphammodel;
         private $chitietsanphamModel;
+        private $mauModel;
+        private $sizeModel;
         public function __construct()
         {
             $this->sanphammodel = $this->model("SanphamModel");
             $this->chitietsanphamModel = $this->model("ChitietsanphamModel");
+            $this->mauModel = $this->model("MauModel");
+            $this->sizeModel = $this->model("SizeModel");
         }
 
         public function index(){
@@ -56,9 +60,41 @@
         }
         public function showChiTietSanPham(){
             $id = isset($_POST['id'])?$_POST['id']:'';
+            $idMau = '';
+            $idSize = '';
+            $readyToCart = [];
+            $quantity = 0;
+            if(isset($_POST['idMau']) && isset($_POST['idSize'])){
+                $idMau = $_POST['idMau'];
+                $idSize = $_POST['idSize'];
+                if($this->chitietsanphamModel->checkChiTietSanPham($id, $idMau, $idSize) != []){
+                    $readyToCart = $this->chitietsanphamModel->checkChiTietSanPham($id, $idMau, $idSize);
+                    $quantity = $readyToCart['soLuong'];
+                }else{
+                    $quantity = 'Không còn sản phẩm';
+                }
+            }
+
+            $dataSanPham = $this->sanphammodel->getSanPhamById($id); 
+            $dataChiTietSanPham = $this->chitietsanphamModel->getChiTietSanPhamByIdSanPham($id);
+            $dataMau = [];
+            $dataSize = [];
+            foreach($dataChiTietSanPham as $value){
+                $mau = $this->mauModel->getMauByIdMau($value['idMau']);
+                $size = $this->sizeModel->getSizeByIdSize($value['idSize']);
+                array_push($dataMau, $mau);
+                array_push($dataSize, $size);
+            }
+           
             $this->view('frontend.sanpham.chitietsanpham', [
-                'dataSanPham' => $this->sanphammodel->getSanPhamById($id),
-                'dataChiTietSanPham' => $this->chitietsanphamModel->getChiTietSanPhamByIdSanPham($id)
+                'dataSanPham' => $dataSanPham,
+                'dataChiTietSanPham' => $dataChiTietSanPham,
+                'dataMau' => $dataMau,
+                'dataSize' => $dataSize,
+                'readyToCart' => $readyToCart,
+                'idMau' => $idMau,
+                'idSize' => $idSize,
+                'quantity' => $quantity
             ]);
         }
     }

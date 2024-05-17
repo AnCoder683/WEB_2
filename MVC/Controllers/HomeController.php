@@ -8,9 +8,9 @@
         public function index(){
             $this->login();
         }
-
         public function login() {
 
+            $this->view('frontend.master', []);
+            
         }
-       
     }
