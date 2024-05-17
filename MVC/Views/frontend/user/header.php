@@ -227,7 +227,7 @@
     </div>
 </section>
 
-<script src="http://localhost/BEW/MVC/ajax/jquery-3.7.1.min.js"></script>
+<script src="http://localhost/WEB_2/MVC/ajax/jquery-3.7.1.min.js"></script>
 
 <script>
      $(document).ready(function(){
@@ -237,7 +237,7 @@
             function showCart() {
                 let getIdKhachHang = document.querySelector('.cart-js').dataset.idkhachhang;
                
-                $.post("http://localhost/BEW/cart/showCart", {
+                $.post("http://localhost/WEB_2/cart/showCart", {
                     idKhachHang: getIdKhachHang,
                 }, function(data){
                     $('.body').html(data);

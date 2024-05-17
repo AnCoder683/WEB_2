@@ -284,7 +284,7 @@
                     const formattedDate = `${year}-${month}-${day}`;
                     
                     alert(formattedDate)
-                    $.post("http://localhost/BEW/cart/done", {
+                    $.post("http://localhost/WEB_2/cart/done", {
                         tongTien: tongTien,
                         idKhachHang: idKhachHang,
                         toDay: formattedDate

@@ -24,7 +24,7 @@
           " aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                    <a href="http://localhost/BEW/Sanpham/showSanPham" class="text-decoration-none text-dark text-light">Trang Chủ</a>
+                    <a href="http://localhost/WEB_2/Sanpham/showSanPham" class="text-decoration-none text-dark text-light">Trang Chủ</a>
                 </li>
                 <li class="breadcrumb-item">
                     <a href="#" class="text-decoration-none text-dark text-light">{{ product.category.title }}</a>
@@ -313,7 +313,7 @@
 
             var idSanPham = <?php echo isset($dataSanPham['idSanPham']) ? json_encode($dataSanPham['idSanPham']) : ''; ?>;
             console.log("idMau: " + idMau + ", idSize: " + idSize + ", idSanPham: " + idSanPham);
-                $.post("http://localhost/BEW/Sanpham/showChiTietSanPham", {
+                $.post("http://localhost/WEB_2/Sanpham/showChiTietSanPham", {
                     // Post: Var
                     idMau: idMau,
                     idSize: idSize,
@@ -337,7 +337,7 @@
                 let pushIdToCart = document.querySelector('.addToCart-js').dataset.idchitietsanpham;
                 let quantity = document.querySelector('#quantity').value;
                 let idKhachHang = document.querySelector('.cart-js').dataset.idkhachhang;
-                $.post("http://localhost/BEW/cart/addToCart", {
+                $.post("http://localhost/WEB_2/cart/addToCart", {
                     idToCart: pushIdToCart,
                     sanPhamQuantity: quantity,
                     idKH: idKhachHang
@@ -365,7 +365,7 @@
                 let find = $('#find').val();
                 let changeVal = $('#sort').val();
 
-                $.post("http://localhost/BEW/Sanpham/timkiemSanpham", {
+                $.post("http://localhost/WEB_2/Sanpham/timkiemSanpham", {
                     sortType: changeVal, 
                     findSanPham: find
                 }, function(data){

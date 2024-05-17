@@ -111,7 +111,7 @@
                         </div>
                     </div>
 
-                    <button class="w-100 btn btn-danger checkout-js" href="">Thanh Toán</button>
+                    <button class="w-100 btn btn-danger checkout-js" href="#">Thanh Toán</button>
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                 let idkhachhang = document.querySelector('.cart-js').dataset.idkhachhang;
                 let totalCart = `<?php echo $totalCart;?>`;
                 if(totalCart > 0){
-                    $.post("http://localhost/BEW/cart/checkout", {
+                    $.post("http://localhost/WEB_2/cart/checkout", {
                             idKhachHang: idkhachhang
                         }, (data)=>{
                             $('.body').html(data);
@@ -144,7 +144,7 @@
                     console.log(idChiTietSanPham);
                     console.log(idKhachHang);
                     console.log(idGioHang);
-                    $.post("http://localhost/BEW/cart/showCart", {
+                    $.post("http://localhost/WEB_2/cart/showCart", {
                     removeIdChiTietSanPhamFromCart: idChiTietSanPham,
                     idKhachHang: idKhachHang,
                     idGioHang: idGioHang
@@ -161,7 +161,7 @@
                 let idGioHang = document.querySelector('.delAll-js').dataset.idGioHang;
                 
                 // alert(idGioHang);
-                $.post("http://localhost/BEW/cart/showCart", {
+                $.post("http://localhost/WEB_2/cart/showCart", {
                     removeAll: idGioHang,
                     idKhachHang: idKhachHang
                     }, (data)=>{

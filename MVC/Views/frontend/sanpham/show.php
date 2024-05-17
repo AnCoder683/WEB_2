@@ -133,7 +133,7 @@
             </div>
         </div>
     </div>
-    <script src="http://localhost/BEW/MVC/ajax/jquery-3.7.1.min.js"></script>
+    <script src="http://localhost/WEB_2/MVC/ajax/jquery-3.7.1.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -155,7 +155,7 @@
                 let find = $('#find').val();
                 let changeVal = $('#sort').val();
 
-                $.post("http://localhost/BEW/Sanpham/timkiemSanpham", {
+                $.post("http://localhost/WEB_2/Sanpham/timkiemSanpham", {
                     sortType: changeVal, 
                     findSanPham: find
                 }, function(data){
@@ -165,7 +165,7 @@
         });
         $('.showChiTiet-js').click(function() {
             let idsanpham = $(this).data('idsanpham');
-            $.post("http://localhost/BEW/Sanpham/showChiTietSanPham", {
+            $.post("http://localhost/WEB_2/Sanpham/showChiTietSanPham", {
                 id: idsanpham
             }, (data)=>{
                 $('.body').html(data);
