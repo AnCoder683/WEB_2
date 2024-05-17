@@ -18,6 +18,18 @@
             return $this->insert_getlastId(self::TABLE, $data);
         }
 
+        public function getLastId(){
+            $sql = "SELECT idSanPham FROM sanpham ORDER BY idSanPham DESC LIMIT 1";
+            return $this->select($sql);
+        }
+
+        public function update_sanpham($data, $id){
+            return $this->update(self::TABLE, $data, $id);
+        }
+
+        public function get_sanpham($id){
+            return $this->findById(self::TABLE, $id);
+        }
         public function paginationData($start, $per_page)
         {
             $sql = "SELECT *
@@ -36,5 +48,9 @@
             $sql = "SELECT COUNT(*) as total FROM sanpham";
             $result = $this->select($sql);
             return $result ? $result[0]['total'] : 0;
+        }
+
+        public function delete_sanpham($id){
+            return $this->delete(self::TABLE, $id);
         }
     }

@@ -1,3 +1,4 @@
+
 <div class="content">
     <div class="shadow-sm px-5 py-3 shadow-lg">
         <h5 class="mb-0 fw-semibold">Quản Lý Sản Phẩm</h5>
@@ -5,7 +6,7 @@
 
     <div class="px-5">
         <div class="d-flex justify-content-between align-items-center mt-5">
-            <a href="#!user/add" class="btn btn-danger">Thêm Sản Phẩm Mới
+            <a href="<?= BASE_URL?>/sanpham/them" class="btn btn-danger">Thêm Sản Phẩm Mới
                 <i class="fas fa-plus"></i>
             </a>
         </div>
@@ -69,3 +70,27 @@
         </div>
     </div>
 </div>
+<script>
+    $('body').on('click', '.btnDelete', function(e){
+        e.preventDefault();
+        const productRow = $(this).closest('tr');
+        $.ajax({
+        url: BASE_URL + '/sanpham/xoasanpham/' + product.idSanPham,
+        success: function(response) {
+            response = JSON.parse(response);
+            if(response['result'] == true) {
+                productRow.remove();
+                showAlert(response['message'], 'success');
+            } else {
+                showAlert(response['message'], 'danger')
+            }
+            // Remove the product row from the table
+            
+        },
+        error: function(xhr, status, error) {
+            // Display error message
+            alert('Error deleting product: ' + error);
+        }
+    });
+    });
+</script>

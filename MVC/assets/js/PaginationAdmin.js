@@ -1,4 +1,3 @@
-var BASE_ASSETS = "http://localhost/fashionstoremvc/MVC/assets";
 var per_page = 3;
 function loadPage(page) {
     // Tính totalPages và gọi createPagination trong callback
@@ -13,6 +12,11 @@ function loadPage(page) {
                 $('#productTable tbody').empty();
                 cnt = (parseInt(page) - 1)*per_page;
                 $.each(response, function(index, product) {
+                    if(product.tt_xoa == 1) {
+                        tinhtrang = "Kích hoạt";
+                    } else {
+                        tinhtrang = "Ẩn";
+                    }
                     $('#productTable tbody').append(
                         '<tr><td>' 
                         + ++cnt + '</td><td>' 
@@ -23,14 +27,18 @@ function loadPage(page) {
                         + '<td>' + product.soLuongTrongKho + '</td>'
                         + '<td>' + product.tenLoai + '</td>'
                         + '<td><img src="'+ BASE_ASSETS +'/img/uploads/'+product.img+'" alt="Hình ảnh sản phẩm" width="80" height="120"></td>'
-                        + '<td>' + product.tt_xoa + '</td>'
+                        + '<td>' + tinhtrang + '</td>'
                         + '<td>' +
                             // <a href="?action=quanlysanpham&query=sua?id=<?= $value['idSanPham']?>">
                             // Sửa</a> |
                             // <a href="FE/modules/quanlysanpham/xuly.php?query=xoa?id=<?= $value['idSanPham']?>">
                             // Xóa
                             // </a> |
-                            '<a href="'+BASE_URL+'/chitietsanpham/chitiet/'+product.idSanPham+'">Chi tiết</a>'
+                            '<a class="btn btn-info" href="'+BASE_URL+'/sanpham/showFormSua/'+product.idSanPham+'">Sửa</a> |'
+                            +
+                            '<a class="btn btn-primary" href="'+BASE_URL+'/chitietsanpham/chitiet/'+product.idSanPham+'">Chi tiết</a> |'
+                            +
+                            '<a class="btn btn-danger btnDelete">Xóa</a>'
                         + '</td>'
                         +
                         '</tr>')

@@ -1,16 +1,11 @@
 <div class="content">
     <div class="shadow-sm px-5 py-3 shadow-lg">
-        <h5 class="mb-0 fw-semibold">Quản lý Phiếu Nhập</h4>
+        <h5 class="mb-0 fw-semibold">Quản lý Đơn hàng</h4>
     </div>
     <div class="px-5">
-        <div class="d-flex justify-content-between align-items-center mt-5">
-            <a href="<?= BASE_URL?>/phieunhap/add" class="btn btn-danger">Thêm phiếu nhập
-                <i class="fas fa-plus"></i>
-            </a>
-        </div>
         
         <form id="timkiemdonnhapForm" action="" method="POST">
-            <p>Tìm phiếu nhập theo</p>
+            <p>Tìm đơn hàng</p>
         </form>
         <table class="mt-5 table table-striped" width="50%" style="border-collapse: collapse;">
             <tr>    
@@ -26,27 +21,27 @@
             </tr>
             <?php
                 $i = 0;
-                $tongTienNhap = 0;
+                $tongTienDonHang = 0;
                 
                 foreach ($data as $key => $value) {
                     if($value["tinhTrang"] === "Hoàn thành") {
-                        $tongTienNhap += $value["thanhTien"];
+                        $tongTienDonHang += $value["thanhTien"];
                     }
-                    $id = $value["idDonNhap"];
+                    $id = $value["idDonHang"];
                     $i++;
             ?>
             <tr>
                 <td><?= $i?></td>
                 <td><?= $id?></td>
-                <td><?= $value['tongTienNhap']?></td>
+                <td><?= $value['tongTienHang']?></td>
                 <td><?= $value['phiVanChuyen']?></td>
                 <td><?= $value['thanhTien']?></td>
-                <td><?= $value['tenNhaCungCap']?></td>
+                <td><?= $value['tenKhachHang']?></td>
                 <td><?= $value['tenNhanVien']?></td>
                 <?php 
-                    if($value['tinhTrang'] === "Chờ nhận hàng") {
+                    if($value['tinhTrang'] === "Chưa xác nhận") {
                         $color = "text-warning";
-                    } else if ($value["tinhTrang"] === "Chưa xác nhận") {
+                    } else if ($value["tinhTrang"] === "Chờ nhận hàng") {
                         $color = "text-danger";
                     } else if ($value["tinhTrang"] === "Hoàn thành") {
                         $color = "text-primary";
@@ -81,9 +76,7 @@
             ?>
             
         </table>
-                <p class="border-bottom border-success ">Tổng tiền nhập hàng: <?= $tongTienNhap?></p> 
-                
-
+                <p class="border-bottom border-success ">Tổng thu đơn hàng: <?= $tongTienDonHang?></p> 
         <!-- <div class="w-100 d-flex align-items-center justify-content-center mt-3">
             <nav aria-label="Page navigation">
                 <ul class="pagination pagination-danger">
@@ -95,12 +88,3 @@
         </div> -->
     </div>
 </div>
-<script>
-    function findSanPham()
-    {
-        $.ajax(function(e){
-            e.preventDefault();
-
-        })
-    }
-</script>

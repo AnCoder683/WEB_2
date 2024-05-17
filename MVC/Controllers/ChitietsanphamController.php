@@ -19,4 +19,9 @@
                 "data" => $data
             ]);
         }
+
+        public function xoachitiet($id)
+        {
+            
+        }
     }

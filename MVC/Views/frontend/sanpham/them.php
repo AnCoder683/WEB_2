@@ -185,17 +185,53 @@
 
             function validationSanpham() 
             {
-                check = true;
-                tensp = document.getElementById("name").value;
-                if(tensp === "") {
-                    showAlert("Tên sản phẩm không được trống");
-                    return false;
+                $('.error').remove();
+
+                var isValid = true;
+
+                // Validate Tên Sản Phẩm
+                var name = $('#name').val().trim();
+                if (name === '') {
+                    isValid = false;
+                    $('#name').after('<span class="error" style="color:red;">Tên sản phẩm không được để trống</span>');
                 }
-                loaisp = document.getElementById("category").value;
-                if(loaisp === "") {
-                    showAlert("Bạn chưa chọn loại sản phẩm");
-                    return false;
+
+                // Validate Loại Sản Phẩm
+                var category = $('#category').val();
+                if (category === '') {
+                    isValid = false;
+                    $('#category').after('<span class="error" style="color:red;">Loại sản phẩm không được để trống</span>');
                 }
-                return true
+
+                // Validate Giá
+                var price = $('#price').val().trim();
+                if (price === '' || isNaN(price) || parseFloat(price) <= 0) {
+                    isValid = false;
+                    $('#price').after('<span class="error" style="color:red;">Giá sản phẩm phải là số dương</span>');
+                }
+
+                // Validate Ảnh
+                var images = $('#images').val();
+                if (images === '') {
+                    isValid = false;
+                    $('#images').after('<span class="error" style="color:red;">Ảnh sản phẩm không được để trống</span>');
+                }
+
+                // Validate Tình trạng
+                var tinhtrang = $('#tinhtrang').val();
+                if (tinhtrang === '') {
+                    isValid = false;
+                    $('#tinhtrang').after('<span class="error" style="color:red;">Tình trạng không được để trống</span>');
+                }
+
+                // Validate Mô Tả
+                var description = $('#description').val().trim();
+                if (description === '') {
+                    isValid = false;
+                    $('#description').after('<span class="error" style="color:red;">Mô tả không được để trống</span>');
+                }
+
+                // If form is valid, submit the form
+                return isValid;
             }
     </script>

@@ -1,4 +1,5 @@
 var BASE_URL = "http://localhost/fashionstoremvc";
+var BASE_ASSETS = "http://localhost/fashionstoremvc/MVC/assets";
 var currentpage = "sanpham";
 function changeURL(newURL) {
     window.history.pushState({ path: newURL }, '', newURL);
@@ -67,7 +68,9 @@ function confirmLogout() {
 function confirmAction() {
     return confirm("Bạn có muốn thực hiện hành động này?");
 }
-
+function textconfirm(text) {
+    return confirm(text);
+}
 function setcurrentpage(page) {
     currentpage = page;
 }

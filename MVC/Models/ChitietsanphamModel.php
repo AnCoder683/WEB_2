@@ -50,5 +50,32 @@
         public function themchitiet($variant) {
             $this->insert(self::table, $variant);
         }
+
+        public function search_sanpham($id){
+            $sql = "SELECT * FROM chitietsanpham WHERE idSanPham = '$id'";
+            return $this->select($sql);
+        }
+
+        public function xoachitietsanpham($id){
+            return $this->delete(self::table, $id);
+        }
+
+        public function getall_chitietsanpham(){
+            $sql = "SELECT 
+            *
+            FROM 
+                sanpham sp
+            JOIN 
+                chitietsanpham chitiet ON sp.idSanPham = chitiet.idSanPham
+            JOIN 
+                mau ON chitiet.idMau = mau.idMau
+            JOIN 
+                size ON chitiet.idSize = size.idSize
+            JOIN
+                loaisanpham ON loaisanpham.idLoaiSanPham = sp.idLoaiSanPham
+            ORDER BY 
+                sp.idSanPham DESC";
+            return $this->select($sql);
+        }
     }
 ?>

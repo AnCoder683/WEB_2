@@ -37,16 +37,15 @@
         </li>
 
         <li id="quanlydanhmucsanpham" class="sidebar-item permission">
-            <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#category"
-                aria-expanded="false" aria-controls="category">
+            <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#sidebarcategory"
+                aria-expanded="false" aria-controls="sidebarcategory">
                 <i class="fa-solid fa-layer-group"></i>
                 <span>Danh Mục</span>
             </a>
-            <ul id="category" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+            <ul id="sidebarcategory" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                 <li class="sidebar-item">
                     <a href="<?php echo BASE_URL?>/loaisanpham" class="sidebar-link">Quản Lý Danh Mục</a>
                 </li>
-
                 <li class="sidebar-item">
                     <a href="<?php echo BASE_URL?>/loaisanpham/themloaisanpham" class="sidebar-link">Thêm Danh Mục Mới</a>
                 </li>
@@ -82,9 +81,6 @@
                 <li class="sidebar-item">
                     <a href="<?php echo BASE_URL?>/phieunhap/add" class="sidebar-link">Thêm đơn nhập</a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="#!coupon" class="sidebar-link">Duyệt đơn nhập</a>
-                </li>
             </ul>
         </li>
 
@@ -96,7 +92,7 @@
             </a>
             <ul id="order" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                 <li class="sidebar-item">
-                    <a href="#!order" class="sidebar-link">Quản Lý Đơn Hàng</a>
+                    <a href="<?= BASE_URL?>/donhang/xemtatcadonhang" class="sidebar-link">Quản Lý Đơn Hàng</a>
                 </li>
 
             </ul>

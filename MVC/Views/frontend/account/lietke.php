@@ -57,7 +57,7 @@
             </tbody>
         </table>
 
-        <div class="w-100 d-flex align-items-center justify-content-center mt-3">
+        <!-- <div class="w-100 d-flex align-items-center justify-content-center mt-3">
             <nav aria-label="Page navigation">
                 <ul class="pagination pagination-danger">
 
@@ -66,6 +66,6 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
     </div>
 </div>

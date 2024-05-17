@@ -20,7 +20,6 @@
                 $username = $_POST["username"];
                 $password = $_POST["password"];
                 $finduser = $this->acountmodel->findUsername($username);
-                die($finduser);
                 if($finduser != false){
                     echo "đăng nhập thành công";
                 } else{

@@ -232,7 +232,7 @@
                         <tr>
                             <td>TokyoLife được vinh danh “Giải thưởng Hành động vì Cộng đồng”
                             </td>
-                            <td>Nguyễn An Thuận</td>
+                            <td>Trần Công Minh</td>
                             <td>12-04-2023</td>
                             <td>
                                 <a href="" class="btn btn-danger">
@@ -261,7 +261,7 @@
                         <tr>
                             <td>TÍCH CỰC ĐÀO TẠO NGHỀ GẮN VỚI GIẢI QUYẾT VIỆC LÀM NGƯỜI KHUYẾT TẬT
                             </td>
-                            <td>Nguyễn An Thuận</td>
+                            <td>Trần Công Minh</td>
                             <td>12-04-2023</td>
                             <td>
                                 <a href="" class="btn btn-danger">

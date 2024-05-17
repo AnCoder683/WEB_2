@@ -56,7 +56,7 @@
             }
         }
 
-        public function delete($table, $id){
+        public function delete($table, $id) {
             $pk = $this->_getPK($table);
             $sql = "DELETE FROM $table WHERE $pk = '$id'";
             try {
@@ -67,15 +67,15 @@
             }
         }
 
-        protected function _getArrayData($query){
+        protected function _getArrayData($query) {
             $data = [];
-            while($row = mysqli_fetch_assoc($query)){
+            while($row = mysqli_fetch_assoc($query)) {
                 array_push($data, $row);
             }
             return $data;
         }
         // hàm này lấy pk
-        protected function _getPK($table){
+        protected function _getPK($table) {
             $sqlID = "SELECT COLUMN_NAME
             FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
             WHERE TABLE_NAME = '$table'
@@ -102,7 +102,8 @@
             $vals = implode(', ', $arrayVal);
             $sql = "INSERT INTO $table($cols) VALUES($vals)";
             if ($this->_query($sql)) {
-                return strval(mysqli_insert_id($this->connect));
+                $lastInsertedId = mysqli_insert_id($this->connect);
+                return strval($lastInsertedId);
             } else {
                 return false;
             }
