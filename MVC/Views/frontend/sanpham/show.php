@@ -65,7 +65,7 @@
                     
                         <div class="card position-relative custom-card-hover">
                             <a data-idsanpham="<?php echo $value['idSanPham']?>" class="nav-link p-2 showChiTiet-js">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $value['img']?>.webp" class="img-fluid card-img-top"
+                                <img src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $value['img']?>" class="img-fluid card-img-top"
                                     style="height: 240px !important;object-fit: cover;">
                             </a>
                             <div class="card-body p-2">

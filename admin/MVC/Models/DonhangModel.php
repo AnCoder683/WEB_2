@@ -10,5 +10,10 @@
             return $this->select($sql);
         }
         
+         public function count_donhang(){
+            $sql = "SELECT COUNT(*) AS tongdonhang
+            FROM donhang";
+            return $this->select($sql);
+         }
     }
 ?>

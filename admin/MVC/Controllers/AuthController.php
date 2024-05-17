@@ -18,7 +18,8 @@
                     if(!empty($finduser)){
                         if($finduser[0]['tinhTrang'] === '1'){
                             $response = ['success' => true, 'redirect' => BASE_URL.'/admin/dashboard'];
-                            $_SESSION['account'] = $finduser[0];
+                            $thongtin = $this->acountmodel->thongtintaikhoan($finduser[0]['tenDangNhap']);
+                            $_SESSION['account'] = $thongtin[0];
                         } else {
                             $response = ['error' => 'Tài khoản của bạn đã bị khóa'];
                         }

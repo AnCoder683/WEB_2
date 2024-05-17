@@ -1,10 +1,11 @@
 <?php
     class AdminController extends BaseController{
         private $acountmodel;
-        private $currentaccount;
+        private $donhangmodel;
         public function __construct()
         {
             $this->acountmodel = $this->model("AcountModel");
+            $this->donhangmodel = $this->model("DonhangModel");
         }
         public function index()
         {
@@ -32,10 +33,13 @@
         }
         public function dashboard()
         {
+            $donhang = $this->donhangmodel->count_donhang();
+            $tongdh = $donhang[0]['tongdonhang'];
             $this->view("frontend.masteradmin", [
                 "content"=> "admin/dashboard",
                 "header"=> "admin/header",
                 "sidebar"=> "admin/sidebar",
+                "tongdh"=> $tongdh
             ]);
         }
 

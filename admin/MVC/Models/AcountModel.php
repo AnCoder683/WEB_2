@@ -64,6 +64,13 @@
             }
             return $this->findById("khachhang", $username);
         }
+
+        public function thongtinhanvien($username) {
+            $sql = "SELECT * FROM nhanvien nv 
+                JOIN taikhoan ON taikhoan.tendangnhap = nv.idNhanVien
+                WHERE nv.idNhanVien = '$username'";
+                return $this->select($sql);
+        }
         public function updateAccount($data, $id)
         {
             return $this->update(self::TABLE, $data, $id);

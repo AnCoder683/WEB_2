@@ -87,7 +87,7 @@
                 $hinhanh = $_FILES['images']['name'];
                 $hinhanh_temp = $_FILES['images']['tmp_name'];
                  // Handle file upload
-                $targetDir = './MVC/assets/img/uploads/';
+                $targetDir = '../MVC/assets/img/uploads/';
                 $hinhanh = uniqid().'_'.$hinhanh;
                 $targetFile = $targetDir . $hinhanh;
                 $data["img"] = $hinhanh;

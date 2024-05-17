@@ -1,5 +1,5 @@
-var BASE_URL = "http://localhost/fashionstoremvc";
-var BASE_ASSETS = "http://localhost/fashionstoremvc/MVC/assets";
+var BASE_URL = "http://localhost/WEB_2/admin";
+var BASE_ASSETS = "http://localhost/WEB_2/admin/MVC/assets";
 var currentpage = "sanpham";
 function changeURL(newURL) {
     window.history.pushState({ path: newURL }, '', newURL);

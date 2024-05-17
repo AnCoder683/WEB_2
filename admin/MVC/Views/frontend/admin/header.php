@@ -21,7 +21,7 @@
                 <span class="dropdown-toggle d-flex align-items-center gap-2" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img src="<?php echo BASE_ASSETS?>/img/avatar.jpg" class="img-fluid rounded-circle" width="40px">
-                    <span>Xin Chào, Admin</span>
+                    <span>Xin Chào, <?= $_SESSION['account']['tenNhanVien']?></span>
                 </span>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Thông Tin Cá Nhân</a></li>

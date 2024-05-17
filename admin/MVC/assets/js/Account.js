@@ -1,4 +1,3 @@
-var BASE_URL = "http://localhost/fashionstoremvc";
 function blockAccount(id) {
     $.ajax({
         url: BASE_URL+'/account/blockaccount/'+id, // Đường dẫn đến file xử lý AJAX

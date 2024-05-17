@@ -14,7 +14,7 @@
                             <div class="card-body">
                                 <p class="card-title fw-medium fs-5">Đơn Hàng</p>
                                 <h5 class="fw-bold">
-                                    29
+                                    <?= $tongdh?>
                                 </h5>
                             </div>
                         </div>
