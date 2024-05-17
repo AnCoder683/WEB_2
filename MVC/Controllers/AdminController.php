@@ -1,6 +1,7 @@
 <?php
     class AdminController extends BaseController{
         private $acountmodel;
+        private $currentaccount;
         public function __construct()
         {
             $this->acountmodel = $this->model("AcountModel");
@@ -14,20 +15,20 @@
         {
             $this->view("frontend.adminlogin", []);
         }
-        public function loginhandle()
-        {
-            if(isset($_POST["username"]) && isset($_POST["password"])){
-                $username = $_POST["username"];
-                $password = $_POST["password"];
-                $finduser = $this->acountmodel->findUsername($username);
-                die($finduser);
-                if($finduser != false){
-                    echo "đăng nhập thành công";
-                } else{
-                    echo "thất bại";
-                }
 
+        public function logout()
+        {
+            unset($_SESSION['account']);
+        }
+
+        public function getpermission()
+        {
+            if(isset($_SESSION['account'])){
+                $currentaccount = $_SESSION['account'];
+                $user = $currentaccount['tenDangNhap'];
+                $datapermisson = $this->acountmodel->getpermission($user);
             }
+            echo json_encode($datapermisson);
         }
         public function dashboard()
         {
@@ -40,11 +41,16 @@
 
         public function eror404()
         {
-            $this->view("frontend.masteradmin", [
-                "content"=> "_404",
-                "header"=> "admin/header",
-                "sidebar"=> "admin/sidebar",
-            ]);
+            if(isset($_SESSION["account"])){
+                $this->view("frontend.masteradmin", [
+                    "content"=> "_404",
+                    "header"=> "admin/header",
+                    "sidebar"=> "admin/sidebar",
+                ]);
+            } else {
+                $this->view("frontend.masteradmin", [
+                    "content"=> "_404",
+                ]);
+            }
         }
-       
     }

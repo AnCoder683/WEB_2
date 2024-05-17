@@ -26,21 +26,22 @@
         <div class="header_middle py-3 bg-menu-custom">
             <div class="container">
                 <div class="row align-items-center">
-                    <a href="<?= BASE_URL?>/sanpham/showsanpham" class="col-3">
-                        <img src="<?php echo BASE_ASSETS ?>/img copy/icon/logo.svg" class="img-fluid" />
+                    <a href="index.html" class="col-3">
+                        <img src="<?php echo BASE_ASSETS?>/img/icon/logo.svg" class="img-fluid" />
                     </a>
+
                     <div ng-controller="SearchController" class="col-6 position-relative">
-                        <div class="form-search container-fluid position-relative">
-                            <input id="find" name="findSanPham" value="<?php if(isset($_POST['findSanPham'])){echo $_POST['findSanPham'];}?>" type="text" class="form-control search-box" ng-model="searchText"
+                        <form class="form-search container-fluid position-relative">
+                            <input type="text" class="form-control search-box" ng-model="searchText"
                                 placeholder="Tìm Kiếm Sản Phẩm . . ." ng-change="search()">
 
-                            <button id="searchBtn" type="submit" class="btn btn-danger position-absolute top-0 end-0">
+                            <button type="submit" class="btn btn-danger position-absolute top-0 end-0">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
-                        </div>
+                        </form>
 
-                        <!-- <div class="search-result position-absolute bottom--1 z-2 rounded-3 border shadow-sm bg-white w-100"
-                            ng-show="searchText && searchResults.length > 0"> -->
+                        <div class="search-result position-absolute bottom--1 z-2 rounded-3 border shadow-sm bg-white w-100"
+                            ng-show="searchText && searchResults.length > 0">
                             <!-- Hiển thị kết quả tìm kiếm -->
                             <!-- <table class="table table-striped mb-0">
                                 <tbody>
@@ -56,58 +57,58 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
-                        </div> -->
+                            </table> -->
+                        </div>
 
-                        <!-- <div class="search-result position-absolute bottom--1 z-2 rounded-3 border shadow-sm bg-white w-100"
+                        <div class="search-result position-absolute bottom--1 z-2 rounded-3 border shadow-sm bg-white w-100"
                             ng-show="searchText && searchResults.length == 0">
-                            <div class="text-center p-3">
+                            <!-- <div class="text-center p-3">
                                 Không tìm thấy sản phẩm
-                            </div>
-                        </div> -->
+                            </div> -->
+                        </div>
                     </div>
 
 
                     <div class="group-icon col-3 d-flex align-items-center justify-content-end gap-4">
                         <div class="position-relative">
                             <a href="#!cart">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-cart.svg" class="img-fluid icon-size-custom" />
+                                <img src="<?php echo BASE_ASSETS?>/img/icon/icon-cart.svg" class="img-fluid icon-size-custom" />
                             </a>
                         </div>
 
                         <div class="icon-tracking">
                             <a href="#!lookup">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-tracking.svg" class="img-fluid icon-size-custom" />
+                                <img src="./src/assets/img/icon/icon-tracking.svg" class="img-fluid icon-size-custom" />
                             </a>
                         </div>
-                        <?php if(!isset($_SESSION['user'])) {?>
+
                         <div class="dropdown" ng-show="!isLogin">
                             <div class="cursor-pointer dropdown-toggle d-flex align-items-center gap-1" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-user.svg" class="img-fluid icon-size-custom" />
+                                <img src="./src/assets/img/icon/icon-user.svg" class="img-fluid icon-size-custom" />
                                 <span>Tài Khoản</span>
                             </div>
 
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= BASE_URL?>/signup/showsignup">Đăng Ký</a></li>
-                                <li><a class="dropdown-item" href="<?= BASE_URL?>/login/showlogin">Đăng Nhập</a></li>
+                                <li><a class="dropdown-item" href="#!register">Đăng Ký</a></li>
+                                <li><a class="dropdown-item" href="#!login">Đăng Nhập</a></li>
                             </ul>
                         </div>
-                        <?php }else {?>
+
                         <div class="dropdown" ng-show="isLogin">
                             <div class="cursor-pointer dropdown-toggle d-flex align-items-center gap-1" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-user.svg" class="img-fluid icon-size-custom" />
-                                <span ><?= $_SESSION["user"]["ten"]?></span>
+                                <img src="./src/assets/img/icon/icon-user.svg" class="img-fluid icon-size-custom" />
+                                <span>{{ name }}</span>
                             </div>
+
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="<?= BASE_URL?>/user/information">Thông Tin Cá Nhân</a></li>
+                                <li><a class="dropdown-item" href="#!profile">Thông Tin Cá Nhân</a></li>
                                 <li><a class="dropdown-item" href="#!profile/order">Đơn Hàng Của Tôi</a></li>
                                 <li><a href="#!/profile/wishlist" class="dropdown-item">Sản Phẩm Yêu Thích</a></li>
-                                <li><a class="dropdown-item" href="<?= BASE_URL?>/login/logout">Đăng Xuất</a></li>
+                                <li><a class="dropdown-item" ng-click="logout()">Đăng Xuất</a></li>
                             </ul>
                         </div>
-                        <?php }?>
                     </div>
 
                 </div>
@@ -172,6 +173,7 @@
                     <i class="fa-solid fa-bars fs-3"></i>
                 </span>
             </div>
+
             <div class="collapse" id="collapseExample">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -191,6 +193,7 @@
                             </li>
                             <li><a class="dropdown-item" href="products.html">Tất Cả Sản Phẩm</a></li>
                         </ul>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">Cửa Hàng</a>
@@ -222,7 +225,6 @@
         </div>
     </div>
 </section>
-
 
 <script>
 </script>

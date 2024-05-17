@@ -1,3 +1,8 @@
+<?php 
+    if(!isset($_SESSION["account"])) {
+        header("Location: ".BASE_URL."/admin/login");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en" ng-app="TokyoLife">
 
@@ -33,8 +38,14 @@
             ?>
         </div>
     </div>
-        
-        
+
+    <script src="<?= BASE_ASSETS?>/js/loadpermission.js"></script>
+    <script src="<?= BASE_ASSETS?>/js/Account.js"></script>
+    <script src="<?= BASE_ASSETS?>/js/Category.js"></script>
+    <script src="<?= BASE_ASSETS?>/js/Product.js"></script>
+
+</body>
+</html>
 
     <script src="<?php echo BASE_ASSETS?>/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo BASE_ASSETS?>/js/script.js"></script>           

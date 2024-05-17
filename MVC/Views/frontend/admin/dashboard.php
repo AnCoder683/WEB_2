@@ -2,9 +2,7 @@
     <div class="shadow-sm px-5 py-3 shadow-lg">
         <h5 class="mb-0 fw-semibold">Admin Dashboard</h4>
     </div>
-
     <div class="px-5">
-
         <div class="row mt-5">
             <div class="col-12 col-md-4 col-xl-3">
                 <div class="card mb-3">
@@ -169,7 +167,7 @@
                                 <div class="col-md-10">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h5 class="card-title">Đặng Thị Thanh Huyền</h5>
+                                            <h5 class="card-title">Trần Đức Bo</h5>
                                             <p class="mb-0 text-secondary fs-6">Truy Cập 25 Phút Trước</p>
                                         </div>
 
@@ -188,7 +186,7 @@
                                 <div class="col-md-10">
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
-                                            <h5 class="card-title">Trần Công Minh</h5>
+                                            <h5 class="card-title">Nguyễn An Thuận</h5>
                                             <p class="mb-0 text-secondary fs-6">Đang Trực Tuyến</p>
                                         </div>
 
