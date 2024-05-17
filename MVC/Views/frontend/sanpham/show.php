@@ -108,7 +108,7 @@
 
                 </div>
 
-                <div class="row mt-3 row-gap-4" ng-show="loadingProduct">
+                <!-- <div class="row mt-3 row-gap-4" ng-show="loadingProduct">
                     
                     <div class="col-6 col-md-4 col-xl-2" ng-repeat="n in [].constructor(12) track by $index">
                         <div class="card" aria-hidden="true">
@@ -129,7 +129,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

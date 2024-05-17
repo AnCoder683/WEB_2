@@ -70,5 +70,21 @@
                'dataAllChiTietSanPham' => $getAllChiTietSanPham
             ]);
         }
+
+        public function done(){
+            $idKhachHang = $_POST['idKhachHang'];
+            $tongTien = $_POST['tongTien'];
+            $tongTienNum = str_replace(',', '', $tongTien);
+            $tongTienInt = (int)$tongTienNum;
+            $trangThai = "Chưa xác nhận";
+            $toDay = $_POST['toDay'];
+            $phiVanChuyen = 0;
+            $thanhTien = $tongTienInt + $phiVanChuyen;
+            $giamGia = 0;
+            $this->cartModel->done($tongTienInt, $phiVanChuyen, $giamGia, $toDay, $thanhTien, $trangThai, $idKhachHang);
+
+            $idGioHang = $this->cartModel->getIdCartByIdUser($idKhachHang)[0];
+            $this->chitietcartModel->delAllChiTiet($idGioHang);
+        }
         
     }

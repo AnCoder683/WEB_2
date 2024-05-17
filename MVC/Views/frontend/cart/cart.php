@@ -34,7 +34,7 @@
                         </thead>
 
                         <tbody>
-                            <?php $total = 0; $stt = 0; foreach($dataChiTietSanPham as $value){?>
+                            <?php $total = 0; $stt = 0; $totalCart = 0; foreach($dataChiTietSanPham as $value){?>
                                 
                             <tr ng-repeat="item in cart" class="position-relative">
                                 <td><?php echo ++$stt;?></td>
@@ -73,7 +73,7 @@
                                 </td>
                             </tr>   
 
-                            <?php }?>
+                            <?php $totalCart++;}?>
                             
 
                         </tbody>
@@ -120,13 +120,18 @@
         $(document).ready(function(){
             document.querySelector('.checkout-js').addEventListener('click', ()=>{
                 let idkhachhang = document.querySelector('.cart-js').dataset.idkhachhang;
-                alert(idkhachhang);
-                $.post("http://localhost/BEW/cart/checkout", {
-                        idKhachHang: idkhachhang
-                    }, (data)=>{
-                        $('.body').html(data);
-                    })
-                })
+                let totalCart = `<?php echo $totalCart;?>`;
+                if(totalCart > 0){
+                    $.post("http://localhost/BEW/cart/checkout", {
+                            idKhachHang: idkhachhang
+                        }, (data)=>{
+                            $('.body').html(data);
+                        })
+                }else{
+                    alert('Không có sản phẩm nào');
+
+                }
+                })  
         });
 
 
@@ -154,6 +159,7 @@
             document.querySelector('.delAll-js').addEventListener('click', ()=>{
                 let idKhachHang = document.querySelector('.cart-js').dataset.idkhachhang;
                 let idGioHang = document.querySelector('.delAll-js').dataset.idGioHang;
+                
                 // alert(idGioHang);
                 $.post("http://localhost/BEW/cart/showCart", {
                     removeAll: idGioHang,
@@ -164,5 +170,5 @@
             })
         });
         
-
+        
     </script>

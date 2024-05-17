@@ -29,4 +29,10 @@
             $this->_query($sql);
         }
         
+        public function done($tongTienHang, $phiVanChuyen, $giamGia, $ngayDat, $thanhTien, $trangThai, $idKhachHang){
+            $sql = "INSERT INTO donhang (tongTienHang, phiVanChuyen, giamGia, ngayDat, thanhTien, trangThai, idKhachHang) VALUES('$tongTienHang', '$phiVanChuyen', '$giamGia', '$ngayDat', '$thanhTien', '$trangThai', '$idKhachHang')";
+            // die($sql);
+            $this->_query($sql);
+
+        }
     }
