@@ -6,8 +6,11 @@
             
         }
         public function index(){
-            $this->view('frontend.master', []);
-            
+            $this->login();
+        }
+
+        public function login() {
+
         }
        
     }

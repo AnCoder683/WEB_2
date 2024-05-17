@@ -15,7 +15,6 @@
 </style>
     
     <div class="container mt-5">
-    
         <nav style="
             --bs-breadcrumb-divider: url(
               &#34;data:image/svg + xml,
@@ -24,7 +23,7 @@
           " aria-label="breadcrumb">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                    <a href="http://localhost/WEB_2/Sanpham/showSanPham" class="text-decoration-none text-dark text-light">Trang Chủ</a>
+                    <a href="http://localhost/abc/Sanpham/showSanPham" class="text-decoration-none text-dark text-light">Trang Chủ</a>
                 </li>
                 <li class="breadcrumb-item">
                     <a href="#" class="text-decoration-none text-dark text-light">{{ product.category.title }}</a>
@@ -39,12 +38,12 @@
             <div class="col-xl-6 col-sm-12">
                 <div class="d-flex">
                     <div class="img-small d-flex flex-column gap-3 me-3">
-                        <img ng-repeat="image in product.images" src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $dataSanPham['img']?>.webp" class="img-fluid cursor-pointer"
+                        <img ng-repeat="image in product.images" src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $dataChiTietSanPham['imgPath']?>.webp" class="img-fluid cursor-pointer"
                             width="200px" />
                     </div>
 
                     <div class="img-larger">
-                        <img src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $dataSanPham['img']?>.webp" class="img-fluid" id="img-larger" />
+                        <img src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $dataChiTietSanPham['imgPath']?>.webp" class="img-fluid" id="img-larger" />
                     </div>
                 </div>
             </div>
@@ -85,52 +84,41 @@
                         <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-check.svg" alt />
                     </div>
                 </div>
-                
+
                 <div>
                     <label for="selectedVariant" class="form-label">Chọn màu:</label>
-                    <select id="mau-js"
-                        style="display: inline-block;"
+                    <select 
+                        style="
+                            display: inline-block;
+                        "
                         class="form-control w-25" ng-model="selectedVariant"
                         ng-options="variant._id as (variant.color + ' - ' + variant.size ) for variant in product.variants">
-                        <option value="" disabled selected>--Màu--</option>
-                        <?php foreach($dataMau as $value){ ?>
-                            <?php if ($value['idMau'] == $idMau) { ?>
-                                <option value="<?php echo $value['idMau']?>" data-idmau="<?php echo $value['idMau']?>" selected><?php echo $value['tenMau']?></option>
-                            <?php } else { ?>
-                                <option value="<?php echo $value['idMau']?>" data-idmau="<?php echo $value['idMau']?>"><?php echo $value['tenMau']?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>
 
+                        
+                    </select>
                     <label for="selectedVariant" class="form-label">Chọn Size:</label>
                     
-                    <select id="size-js"
-                        style="display: inline-block;"
-                        class="form-control w-25 size-js" ng-model="selectedVariant"
+                    <select
+                        style="
+                            display: inline-block;
+                        "
+                        class="form-control w-25" ng-model="selectedVariant"
                         ng-options="variant._id as (variant.color + ' - ' + variant.size ) for variant in product.variants">
-                        <option value="" disabled selected>--Size--</option>
-                        <?php foreach($dataSize as $value){ ?>
-                            <?php if ($value['idSize'] == $idSize) { ?>
-                                <option value="<?php echo $value['idSize']?>" data-idsize="<?php echo $value['idSize']?>" selected><?php echo $value['tenSize']?></option>
-                            <?php } else { ?>
-                                <option value="<?php echo $value['idSize']?>" data-idsize="<?php echo $value['idSize']?>"><?php echo $value['tenSize']?></option>
-                            <?php } ?>
-                        <?php } ?>
-                    </select>       
+                    </select>
 
                     
                     <div ng-show="selectedVariant">
-                        <p class="mb-0 mt-3 ">Số lượng: <span class="count-js"><?php echo $quantity?></span></p>
+                        <p class="mb-0 mt-3">Số lượng: <?php echo $dataChiTietSanPham['soLuong']?></p>
                     </div>
                 </div>
- 
+
                 <div class="group-quantity">
                     <div class="d-flex flex-column gap-2">
                         <span class="fs-6 fw-bold d-block">Số Lượng</span>
                         <div class="d-flex">
                             <div class="custom-btn-quantity" ng-click="changeQuantity('decrease')">-</div>
                             <input type="number" name="quantity" id="quantity" class="custom-input-quantity text-center"
-                                ng-model="quantity" min="1" max="<?php echo $quantity?>" value="1">
+                                ng-model="quantity">
                             <div class="custom-btn-quantity" ng-click="changeQuantity('increase')">+</div>
                         </div>
                     </div>
@@ -161,10 +149,10 @@
                         ng-click="addToWishlist(product._id)">
                         <i class="fa-solid fa-heart"></i>
                         Yêu Thích
-                    </div>  
+                    </div>
 
-                    <div
-                    data-idchitietsanpham="<?php echo isset($readyToCart['idChiTietSanPham'])?$readyToCart['idChiTietSanPham']:'';?>" class="btn btn-danger rounded-1 w-100 py-2 addToCart-js" ng-click="addToCart(product)">
+
+                    <div class="btn btn-danger rounded-1 w-100 py-2" ng-click="addToCart(product)">
                         <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-cart-plus.svg" />
                         Thêm Vào Giỏ Hàng
                     </div>
@@ -215,7 +203,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="accordion-item">
+                <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -292,88 +280,9 @@
                             <a href="#!login" class="btn btn-danger px-5">Bạn Cần Đăng Nhập</a>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
 
-        <script>
-        $(document).ready(function(){
-            
-            $('#mau-js').change(function() {
-                checkSoLuong();
-            });
-            $('#size-js').change(function() {
-                checkSoLuong();
-            });
-        function checkSoLuong(){
-            var idMau = $('#mau-js option:selected').val();
-            // alert(idMau);
-            var idSize = $('#size-js option:selected').val();
-            // alert(idSize);
-
-            var idSanPham = <?php echo isset($dataSanPham['idSanPham']) ? json_encode($dataSanPham['idSanPham']) : ''; ?>;
-            console.log("idMau: " + idMau + ", idSize: " + idSize + ", idSanPham: " + idSanPham);
-                $.post("http://localhost/WEB_2/Sanpham/showChiTietSanPham", {
-                    // Post: Var
-                    idMau: idMau,
-                    idSize: idSize,
-                    id: idSanPham
-                }, function(data){
-                    $('.body').html(data);
-                });
-            }
-        });  
         
-        
-        $(document).ready(function(){
-            $('.addToCart-js').on('click', function(){
-                quantity = $('.count-js').html();
-                if(quantity !== '0' && quantity !== 'Không còn sản phẩm'){
-                    toCart();
-                    window.location.reload();
-                }  
-            });
-            function toCart() {
-                let pushIdToCart = document.querySelector('.addToCart-js').dataset.idchitietsanpham;
-                let quantity = document.querySelector('#quantity').value;
-                let idKhachHang = document.querySelector('.cart-js').dataset.idkhachhang;
-                $.post("http://localhost/WEB_2/cart/addToCart", {
-                    idToCart: pushIdToCart,
-                    sanPhamQuantity: quantity,
-                    idKH: idKhachHang
-                }, function(data){
-                    $('.body').html(data);
-                });
-            }
-            });
-            $(document).ready(function(){
-            $('#searchBtn').on('click', function(){
-                    search();   
-                });
-
-            $('#find').on('keypress', function(e){
-                if (e.which === 13) { // Kiểm tra nếu phím được nhấn là phím "Enter"
-                    search();
-                }
-            });
-
-            $('#sort').on('change', function(){
-                search();
-            });
-
-            function search() {
-                let find = $('#find').val();
-                let changeVal = $('#sort').val();
-
-                $.post("http://localhost/WEB_2/Sanpham/timkiemSanpham", {
-                    sortType: changeVal, 
-                    findSanPham: find
-                }, function(data){
-                    $('.body').html(data); // Sử dụng đối số data để cập nhật nội dung của phần tử có id là "ketqua"
-                });
-            }
-        });
-    </script>
-
-    
     </div>

@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="<?php echo BASE_ASSETS ?>/css/custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" href="<?php echo BASE_ASSETS ?>/img copy/icon/favicon.webp" type="image/x-icon">
-
-
+    
     <link rel="stylesheet" href="<?php echo BASE_ASSETS ?>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo BASE_ASSETS ?>/css/style.css">
     <link rel="shortcut icon" href="<?php echo BASE_ASSETS ?>/img/favicon.webp" type="image/x-icon">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
 </head>
 <body>
     
@@ -30,7 +31,7 @@
                         // require_once "./MVC/Views/frontend/". $detail .".php";
                     ?>
             <?php
-                if (isset($header)){
+                if (isset($footer)){
                     require_once "./MVC/Views/frontend/". $footer .".php";
                 }
             ?>
@@ -43,7 +44,7 @@
 
     <script src="<?php echo BASE_ASSETS?>/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo BASE_ASSETS?>/js/script.js"></script>           
-
+    <script scr="<?= BASE_ASSETS?>/js/jquery-3.7.1.min.js"></script>
 
 </body>
 

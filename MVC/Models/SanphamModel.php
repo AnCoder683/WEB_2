@@ -12,12 +12,12 @@
             if($or != ''){
                 $sql = "SELECT *
                 FROM sanpham
-                WHERE tenSanPham  LIKE '$fi%'AND tt_xoa = 0
-                ORDER BY $or ";
+                WHERE tenSanPham LIKE '$fi%'
+                ORDER BY $or";
             }else{
                 $sql = "SELECT *
                 FROM sanpham
-                WHERE tenSanPham LIKE '$fi%' AND tt_xoa = 0
+                WHERE tenSanPham LIKE '$fi%'
                 ";
             }
             // die($sql);

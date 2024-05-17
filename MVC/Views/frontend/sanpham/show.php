@@ -108,7 +108,7 @@
 
                 </div>
 
-                <!-- <div class="row mt-3 row-gap-4" ng-show="loadingProduct">
+                <div class="row mt-3 row-gap-4" ng-show="loadingProduct">
                     
                     <div class="col-6 col-md-4 col-xl-2" ng-repeat="n in [].constructor(12) track by $index">
                         <div class="card" aria-hidden="true">
@@ -129,11 +129,11 @@
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
-    <script src="http://localhost/WEB_2/MVC/ajax/jquery-3.7.1.min.js"></script>
+    <script src="http://localhost/ABC/MVC/ajax/jquery-3.7.1.min.js"></script>
 
     <script>
         $(document).ready(function(){
@@ -155,7 +155,7 @@
                 let find = $('#find').val();
                 let changeVal = $('#sort').val();
 
-                $.post("http://localhost/WEB_2/Sanpham/timkiemSanpham", {
+                $.post("http://localhost/abc/Sanpham/timkiemSanpham", {
                     sortType: changeVal, 
                     findSanPham: find
                 }, function(data){
@@ -165,7 +165,8 @@
         });
         $('.showChiTiet-js').click(function() {
             let idsanpham = $(this).data('idsanpham');
-            $.post("http://localhost/WEB_2/Sanpham/showChiTietSanPham", {
+            alert(idsanpham);
+            $.post("http://localhost/abc/Sanpham/showChiTietSanPham", {
                 id: idsanpham
             }, (data)=>{
                 $('.body').html(data);
