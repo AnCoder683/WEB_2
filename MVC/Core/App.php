@@ -7,6 +7,7 @@
         protected $controller = 'SanPhamController';
         protected $action = 'showSanPham';
         protected $params = [];
+
         public function __construct()
         {
             //admincontroller/
