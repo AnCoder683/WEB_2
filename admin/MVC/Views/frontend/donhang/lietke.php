@@ -14,8 +14,6 @@
                 <th>Tổng tiền nhập</th>
                 <th>Phí vận chuyển</th>
                 <th>Thành tiền</th>
-                <th>Nhà cung cấp</th>
-                <th>Người nhập</th>
                 <th>Tình trạng</th>
                 <th>Thao tác</th>
             </tr>
@@ -24,7 +22,7 @@
                 $tongTienDonHang = 0;
                 
                 foreach ($data as $key => $value) {
-                    if($value["tinhTrang"] === "Hoàn thành") {
+                    if($value["trangThai"] === "Hoàn thành") {
                         $tongTienDonHang += $value["thanhTien"];
                     }
                     $id = $value["idDonHang"];
@@ -36,35 +34,33 @@
                 <td><?= $value['tongTienHang']?></td>
                 <td><?= $value['phiVanChuyen']?></td>
                 <td><?= $value['thanhTien']?></td>
-                <td><?= $value['tenKhachHang']?></td>
-                <td><?= $value['tenNhanVien']?></td>
                 <?php 
-                    if($value['tinhTrang'] === "Chưa xác nhận") {
+                    if($value['trangThai'] === "Chưa xác nhận") {
                         $color = "text-warning";
-                    } else if ($value["tinhTrang"] === "Chờ nhận hàng") {
+                    } else if ($value["trangThai"] === "Chờ nhận hàng") {
                         $color = "text-danger";
-                    } else if ($value["tinhTrang"] === "Hoàn thành") {
+                    } else if ($value["trangThai"] === "Hoàn thành") {
                         $color = "text-primary";
                     }
                 ?>
-                <td class="fw-bolder <?= $color?>"><?= $value['tinhTrang']?></td>
+                <td class="fw-bolder <?= $color?>"><?= $value['trangThai']?></td>
                 <td>
                     <a class="btn btn-info " href="<?= BASE_URL?>/phieunhap/xemchitiet/<?= $id?>">Xem chi tiết</a>
                     
                     <?php 
-                        if($value['tinhTrang'] === "Chưa xác nhận") {
+                        if($value['trangThai'] === "Chưa xác nhận") {
                            ?>
-                           <a onclick="return textconfirm('Bạn có muốn xóa đơn nhập: <?= $id?>')" class="btn btn-danger" href="<?= BASE_URL?>/phieunhap/update_tinhtrang/<?= $id?>/'' ">Xóa</a>
-                            <a onclick="return textconfirm('Bạn có muốn xác nhận đơn nhập: <?= $id?>')" class="btn btn-warning" href="<?= BASE_URL?>/phieunhap/update_xacnhan/<?= $id?> ">Xác nhận</a>
+                           <a onclick="return textconfirm('Bạn có muốn xóa đơn hàng: <?= $id?>')" class="btn btn-danger" href="<?= BASE_URL?>/phieunhap/update_trangThai/<?= $id?>/'' ">Xóa</a>
+                            <a onclick="return textconfirm('Bạn có muốn xác nhận đơn hàng: <?= $id?>')" class="btn btn-warning" href="<?= BASE_URL?>/donhang/update_xacnhan/<?= $id?> ">Xác nhận</a>
                             
                     <?php   
                         }
                     ?>
                     <?php 
-                        if($value['tinhTrang'] === "Chờ nhận hàng") {
+                        if($value['trangThai'] === "Chờ nhận hàng") {
                             $status = "Hoàn thành";
                            ?>
-                            <a onclick="return textconfirm('Bạn có muốn xác nhận đã nhận hàng: <?= $id?>')" class="btn btn-primary" href="<?= BASE_URL?>/phieunhap/update_hoanthanh/<?= $id?>">Đã nhận</a>
+                            <a onclick="return textconfirm('Bạn có muốn xác nhận kh đã nhận hàng <?= $id?>')" class="btn btn-primary" href="<?= BASE_URL?>/phieunhap/update_hoanthanh/<?= $id?>">Đã nhận</a>
                     <?php   
                         }
                     ?>

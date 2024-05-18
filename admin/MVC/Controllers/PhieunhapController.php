@@ -83,7 +83,26 @@
         public function themphieunhap() {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Receive form data from AJAX request
-                $chitiet = isset( $_POST['chitiet'] ) ? $_POST['chitiet'] : [];
+                $chitiet = isset( $_POST['chitiet'] ) ? $_POST['chitiet'] : '';
+                $nhacungcap = isset( $_POST['nhacungcap'] ) ? $_POST['nhacungcap'] : '';
+                $tongTienNhap = $_POST['tongTienNhap'];
+                $phiVanChuyen = $_POST['phiVanChuyen'];
+                $nhanvien = $_SESSION['account']['tenDanNhap'];
+                $data = [
+                    "tongTienNhap" => $tongTienNhap,
+                    "phiVanChuyen" => $phiVanChuyen,
+                    "thanhTien" => $tongTienNhap,
+                    "idNhaCungCap" => $nhacungcap,
+                    "idNhanVien" => $nhanvien,
+                    "tinhTrang" => "Chưa xác nhận"
+                ];
+                $result = $this->phieunhapmodel->add_phieunhap($data);
+                if($result) {
+
+                    echo json_encode(['result' => true, 'message' => "thêm phiếu nhập thành công" ]);
+                } else {
+                    echo json_encode(["result"=> false,"message"=> "Thêm phiếu nhập thất bại"]);
+                }
                 echo json_encode(['result' => true, 'message' => json_encode( $chitiet ) ]);
             } else {
                 echo json_encode(['result'=> false, 'message'=> 'Không nhận được yêu cầu']);

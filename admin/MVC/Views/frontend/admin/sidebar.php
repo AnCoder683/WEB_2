@@ -112,7 +112,7 @@
         </li> -->
 
         <li id="quanlythongke" class="sidebar-item permission">
-            <a href="#!statistical" class="sidebar-link">
+            <a href="<?= URL?>/statistics/ThongKe.php" class="sidebar-link">
                 <i class="fa-solid fa-chart-simple"></i>
                 <span>Thống Kê</span>
             </a>

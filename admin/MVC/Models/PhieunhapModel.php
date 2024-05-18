@@ -24,7 +24,10 @@
         {
             return $this->insert(self::TABLE ,$data);
         }
-
+        public function add_phieunhap($data)
+        {
+            return $this->insert(self::TABLE ,$data);
+        }
         public function update_phieunhap($data, $id)
         {
             return $this->update(self::TABLE ,$data, $id);

@@ -1,0 +1,225 @@
+
+.header
+{
+   
+    height: 50px;
+    width: 100%;
+   
+}
+.head-banner
+{   
+    color: #2400c7;
+    height: 50px;
+    width: 100%;
+    
+    
+}
+.box-hender
+{
+    display: inline-block;
+}
+.noidung
+{   
+    background-color: aliceblue;
+    height: 100%;
+    width:  100%;
+    
+}
+.head-content-logo
+{   
+    height: 50px;
+    width:  50px;
+    border: 1px dashed cadetblue;
+    
+}
+.body
+{   
+    color: rgb(255, 0, 212);
+    height: 1800px;
+    width: 100%;
+    border: 2px solid rgb(14, 160, 78);
+    float: left;
+    background-color: #283D5A;
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    /*align-items: center; /* Căn giữa theo chiều dọc */
+}
+.numbering
+{   
+    
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    height: 80px;
+    width: 100%;
+    border: 2px solid rgb(0, 254, 216);
+    display: flex;
+    padding-bottom: 27px;
+    background-color: #EEDBCC
+}
+
+.numbering-content
+{   height: 80px;
+    width: 180px;
+   /* border: 2px solid rgb(255, 0, 247);*/
+    padding: 3px;
+    margin-top: 5px;
+    border: 0px;
+    border-left-width: 1px; /* Điều chỉnh độ rộng của border bên trái */
+    border-right-width: 1px;
+    border-style: solid ;
+    border-color: rgb(20, 16, 58);
+    
+    
+    
+
+}
+.numbering-content1
+{
+    background: #ACCC8B
+}
+.numbering-content1:hover {
+    filter: brightness(50%);
+}
+.numbering-content2
+{
+    background: linear-gradient(to bottom right, #ffcccc 0%, #ffcccc 50%, #ccffff 50%, #ccffff 100%);
+}
+.numbering-content2:hover {
+    filter: brightness(50%);
+}
+.numbering-content3
+{
+    background: linear-gradient(to bottom right, #ffcccc 0%, #ffcccc 50%, #ccffff 50%, #ccffff 100%);
+}
+.numbering-content3:hover {
+    filter: brightness(50%);
+}
+.numbering-content4
+{
+    background: linear-gradient(to bottom right, #ffcccc 0%, #ffcccc 50%, #ccffff 50%, #ccffff 100%);
+}
+.numbering-content4:hover {
+    filter: brightness(50%);
+}
+.numbering-content5
+{
+    background: linear-gradient(to bottom right, #ffcccc 0%, #ffcccc 50%, #ccffff 50%, #ccffff 100%);
+}
+.numbering-content5:hover {
+    filter: brightness(50%);
+}
+.numbering-content6
+{
+    background: linear-gradient(to bottom right, #ffcccc 0%, #ffcccc 50%, #ccffff 50%, #ccffff 100%);
+}
+.numbering-content6:hover {
+    filter: brightness(50%);
+}
+.numbering-content7
+{
+    background: linear-gradient(to bottom right, #ffcccc 0%, #ffcccc 50%, #ccffff 50%, #ccffff 100%);
+}
+.numbering-content7:hover {
+    filter: brightness(50%);
+}
+
+
+
+.numbering-content-icon
+{   
+    
+    top: 5px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+   
+    position: relative;
+    overflow: hidden;
+    
+}
+.icon1
+{
+    background-image: url("http://localhost/WEB_2/img/thongke/income%20icon.png"); /* Đường dẫn đến hình ảnh nền */
+    background-size: cover; /* Đảm bảo hình ảnh nền phủ hết diện tích của phần tử */
+    background-position: center; /* Căn giữa hình ảnh nền */
+}
+.icon2
+{
+    background-image: url("http://localhost/WEB_2/img/thongke/import-icon.png"); /* Đường dẫn đến hình ảnh nền */
+    background-size: cover; /* Đảm bảo hình ảnh nền phủ hết diện tích của phần tử */
+    background-position: center; /* Căn giữa hình ảnh nền */
+}
+.numbering-content-name
+{   top: -25px;
+    left: 40px;
+    width: 100px;
+    height: 20px;
+    
+    border: 1px dotted rgb(0, 151, 10);
+    position: relative;
+
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    color: #283D5A;
+}
+.numbering-content-number
+{   top: -22px;
+    left: 45px;
+    width: 50px;
+    height: 20px;
+    font-size: 14px;
+   
+    position: relative;
+    font-family:  'Open Sans', sans-serif;
+}
+.numbering-content-point
+{   top: -20px;
+    left: 15px;
+    width: 90px;
+    height: 20px;
+    font-size:18px  ;
+    color: #283D5A;
+    position: relative;
+}
+.income-chart
+{   height: 280px;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    /*padding-top: 20px;*/
+    overflow: hidden;
+   
+}
+.small-chart
+{   display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    height: auto;
+    width: auto;
+    
+}
+.happy-chart
+{
+    height: 280px;
+    width: 580px;
+    margin-top: 10px;
+    margin: 50px;
+    /*padding-top: 20px;*/
+    display: inline-block;
+   
+}
+.Big-month-chart
+{   display: flex;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+   
+}
+.month_stock_class{
+    width: auto;
+    height: auto;
+}
+
+
+
