@@ -328,7 +328,7 @@
         $(document).ready(function(){
             $('.addToCart-js').on('click', function(){
                 quantity = $('.count-js').html();
-                if(quantity !== '0' && quantity !== 'Không còn sản phẩm'){
+                if(quantity !== '0' && quantity !== 'Không còn sản phẩm' && document.querySelector('.cart-js').dataset.idkhachhang !== ''){
                     toCart();
                     window.location.reload();
                 }  

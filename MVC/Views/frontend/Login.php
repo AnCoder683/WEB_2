@@ -36,7 +36,7 @@
    </div>
    <script src="https://kit.fontawesome.com/dc0a01535c.js" crossorigin="anonymous"></script>
 <script>
-   var BASE_URL = "http://localhost/BEW";  
+   var BASE_URL = "http://localhost/WEB_2";  
    $("#login-form").on("submit", function(event) {
       event.preventDefault();
       $.ajax({

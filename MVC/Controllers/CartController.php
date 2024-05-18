@@ -34,22 +34,25 @@
                 $this->chitietcartModel->delAllChiTiet($_POST['removeAll']);
             }
             $idKhachHang =  $_POST['idKhachHang'];
-            $this->cartModel->checkCart($idKhachHang);
-            $idGioHang = $this->cartModel->getIdCartByIdUser($idKhachHang)[0];
-            // die($idGioHang);
-            $listChiTietSanPham = $this->chitietcartModel->getListChiTietSanPham($idGioHang);
-            $getAllChiTietSanPham = [];
-            foreach($listChiTietSanPham as $value){
-                $obj = $this->chitietsanphamModel->getChiTietSanPhamObj($value['idChiTietSanPham'], $value['idGioHang']);
-                array_push($getAllChiTietSanPham, $obj);
+            if($idKhachHang != ''){
+                $this->cartModel->checkCart($idKhachHang);
+                $idGioHang = $this->cartModel->getIdCartByIdUser($idKhachHang)[0];
+                // die($idGioHang);
+                $listChiTietSanPham = $this->chitietcartModel->getListChiTietSanPham($idGioHang);
+                $getAllChiTietSanPham = [];
+                foreach($listChiTietSanPham as $value){
+                    $obj = $this->chitietsanphamModel->getChiTietSanPhamObj($value['idChiTietSanPham'], $value['idGioHang']);
+                    array_push($getAllChiTietSanPham, $obj);
+                }
+                // echo '<pre>';
+                // print_r($getAllChiTietSanPham);
+                // die;
+                $this->view('frontend.cart.cart', [
+                    'dataGioHang' => $listChiTietSanPham,
+                    'dataChiTietSanPham' => $getAllChiTietSanPham,
+                ]);
             }
-            // echo '<pre>';
-            // print_r($getAllChiTietSanPham);
-            // die;
-            $this->view('frontend.cart.cart', [
-                'dataGioHang' => $listChiTietSanPham,
-                'dataChiTietSanPham' => $getAllChiTietSanPham,
-            ]);
+         
         }
 
         public function checkout(){

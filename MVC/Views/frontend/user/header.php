@@ -22,6 +22,7 @@
         </div>
     </div>
 
+
     <div id="header-sticky" class="w-100" sticky-scroll>
         <div class="header_middle py-3 bg-menu-custom">
             <div class="container">
@@ -66,12 +67,13 @@
                             </div>
                         </div> -->
                     </div>
+                    
 
 
                     <div class="group-icon col-3 d-flex align-items-center justify-content-end gap-4">
                         <div class="position-relative">
                             <!-- sửa lại -->
-                            <div class="cart-js" data-idkhachhang="kh123" href="">
+                            <div class="cart-js" data-idkhachhang="<?php echo isset($_SESSION['user']['idKhachHang'])?$_SESSION['user']['idKhachHang']:'';?>" href="">
                                 <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-cart.svg" class="img-fluid icon-size-custom" />
                             </div>
                         </div>
@@ -229,7 +231,10 @@
 <script>
      $(document).ready(function(){
         $('.cart-js').on('click', function(){
-                showCart();   
+                if(document.querySelector('.cart-js').dataset.idkhachhang !== ''){
+
+                    showCart();   
+                }
             });
             function showCart() {
                 let getIdKhachHang = document.querySelector('.cart-js').dataset.idkhachhang;
