@@ -10,7 +10,7 @@
         }
 
         public function showlogin() {
-            $this->view('frontend.masteruser', [
+            $this->view('frontend.masteruser', [ 
                 'content' => 'login',
             ]);
         }

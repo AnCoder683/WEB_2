@@ -94,6 +94,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="<?= BASE_URL?>/signup/showsignup">Đăng Ký</a></li>
                                 <li><a class="dropdown-item" href="<?= BASE_URL?>/login/showlogin">Đăng Nhập</a></li>
+                                <li><a class="dropdown-item" href="<?= BASE_URL?>/admin/">Trang Quản Trị</a></li>
                             </ul>
                         </div>
                         <?php }else {?>

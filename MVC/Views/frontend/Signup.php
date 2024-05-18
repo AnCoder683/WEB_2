@@ -73,7 +73,7 @@
    </form>
 
 <script>
-   var BASE_URL = "http://localhost/BEW";  
+   var BASE_URL = "http://localhost/WEB_2";  
    $("#signup-form").on("submit", function(event) {
       event.preventDefault();
       $.ajax({

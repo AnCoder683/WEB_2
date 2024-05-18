@@ -18,20 +18,7 @@
                   <a class="fogot-password" href="">Quên mật khẩu</a>
                </div>
                <button class="login-button" type="submit" name="login-button">ĐĂNG NHẬP</button>
-               <label class="registor" for="">Chưa có tài khoản? <a href="Signup.php">đăng ký</a></label>
-
-               <div class="just-a-line"><span>Hoặc</span></div>
-
-               <div class="login-with-wrapper">
-                  <a href="" class="login-with Google">
-                     <img src="logo/google.svg" alt="">
-                     Google
-                  </a>
-                  <a href="" class="login-with Facebook">
-                     <img src="logo/facebook.svg" alt="">
-                     Facebook
-                  </a>
-               </div>
+               <label class="registor" for="">Chưa có tài khoản? <a href="<?= BASE_URL?>/signup/showsignup">đăng ký</a></label>
       </form>
    </div>
    <script src="https://kit.fontawesome.com/dc0a01535c.js" crossorigin="anonymous"></script>
