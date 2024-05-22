@@ -64,7 +64,7 @@
                     
                         <div class="card position-relative custom-card-hover">
                             <a data-idsanpham="<?php echo $value['idSanPham']?>" class="nav-link p-2 showChiTiet-js">
-                                <img src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $value['img']?>.webp" class="img-fluid card-img-top"
+                                <img src="<?php echo IMG_ASSETS ?>/<?php echo $value['img']?>" class="img-fluid card-img-top"
                                     style="height: 240px !important;object-fit: cover;">
                             </a>
                             <div class="card-body p-2">
@@ -74,7 +74,7 @@
 
                                 <div class="d-flex align-items-center justify-content-start gap-2">
                                     <p class="text-danger fw-bold mb-0">
-                                    <?php echo $value['giaSanPham'] ?>đ
+                                    <?php echo number_format($value['giaSanPham'] + (float)$value['giaSanPham']*$value['phantramloinhuan']/100 - 1) ?>đ
                                     </p>
                                     <p class="mb-0 fs-8 text-decoration-line-through">
                                     <?php echo '20000' ?>đ

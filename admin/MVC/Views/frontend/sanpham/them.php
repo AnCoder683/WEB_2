@@ -37,8 +37,8 @@
             <div class="col-12 mb-4">
                 <label for="tinhtrang" class="form-label">Tình trạng</label>
                 <select name="tinhtrang">
-                    <option value="1">Kích hoạt</option>
-                    <option value="0">Ẩn</option>
+                    <option value="0">Kích hoạt</option>
+                    <option value="1">Ẩn</option>
                 </select>
             </div>
             <div class="mt-5" id="variants-container">
@@ -64,7 +64,7 @@
     </div>
 </div>
 <script>
-            let variantIndex = 0;
+            let variantIndex = 1;
             function addVariant() {
                 const variantHtml = `
                     <div class="row mb-4 variant-row" data-index="${variantIndex}">

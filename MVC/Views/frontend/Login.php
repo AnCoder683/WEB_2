@@ -1,4 +1,8 @@
-      <form class="login-form" action="#" id="login-form" method="POST">
+<?php 
+   if(isset($_SESSION['user'])) {
+      header('Location: http://localhost/WEB_2/sanpham/showsanpham');
+   }
+?>      <form class="login-form" action="#" id="login-form" method="POST">
          <h1>Đăng nhập</h1>
          <div class="form-input">
             <label for="">Tài Khoản:</label>

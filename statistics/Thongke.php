@@ -8,14 +8,6 @@
     <link rel="stylesheet" type="text/css" href="http://localhost/WEB_2/statistics/CSS/ThonhkeCSS/Thongke.css">
     <head class="header">
     <title>Thống kê</title>
-    <div class="head-banner">
-        <div class="box-hender"> tháng</div>
-        <div class="box-hender"> năm</div>
-       
-
-
-
-    </div>
 
     </head>
 
@@ -28,7 +20,7 @@
                     <div class="numbering-content-number" id="doanhthu-div">numb$$$$</div>
                     <div class="numbering-content-point" id="doanhthu-tile-div">point</div>
                 </div>
-                <div  class="numbering-content numbering-content2" id="content-2-click">
+                <!-- <div  class="numbering-content numbering-content2" id="content-2-click">
                     <div class="numbering-content-icon icon2" ></div>
                     <div class="numbering-content-name"> Nhaphang</div>
                     <div class="numbering-content-number">number</div>
@@ -61,7 +53,7 @@
                     <div class="numbering-content-icon" > icon</div>
                     <div class="numbering-content-name"> name</div>
                     <div class="numbering-content-number">number</div>
-                    <div class="numbering-content-point">poitn</div></div>
+                    <div class="numbering-content-point">poitn</div></div> -->
         </div>
 
         <div class="income-chart">        

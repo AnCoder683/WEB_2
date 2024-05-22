@@ -39,12 +39,12 @@
             <div class="col-xl-6 col-sm-12">
                 <div class="d-flex">
                     <div class="img-small d-flex flex-column gap-3 me-3">
-                        <img ng-repeat="image in product.images" src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $dataSanPham['img']?>.webp" class="img-fluid cursor-pointer"
+                        <img ng-repeat="image in product.images" src="<?php echo IMG_ASSETS ?>/<?php echo $dataSanPham['img']?>" class="img-fluid cursor-pointer"
                             width="200px" />
                     </div>
 
                     <div class="img-larger">
-                        <img src="<?php echo BASE_ASSETS ?>/img copy/product/<?php echo $dataSanPham['img']?>.webp" class="img-fluid" id="img-larger" />
+                        <img src="<?php echo BASE_ASSETS ?>/img/uploads/<?php echo $dataSanPham['img']?>" class="img-fluid" id="img-larger" />
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                         </p> -->
 
                         <p class="mb-0 fw-bold fs-4 text-danger">
-                            <?php echo $dataSanPham['giaSanPham']?>đ
+                            <?php echo number_format($dataSanPham['giaSanPham'] + (float)$dataSanPham['giaSanPham']*$dataSanPham['phantramloinhuan']/100 - 1)?>đ
                         </p>
                         <p class="mb-0 fw-light text-decoration-line-through" ng-if="product.sale > 0">
                             100000đ
@@ -165,7 +165,7 @@
 
                     <div
                     data-idchitietsanpham="<?php echo isset($readyToCart['idChiTietSanPham'])?$readyToCart['idChiTietSanPham']:'';?>" class="btn btn-danger rounded-1 w-100 py-2 addToCart-js" ng-click="addToCart(product)">
-                        <img src="<?php echo BASE_ASSETS ?>/img copy/icon/icon-cart-plus.svg" />
+                        <img src="<?= IMG_ASSETS?>/icon-cart-plus.svg" />
                         Thêm Vào Giỏ Hàng
                     </div>
                 </div>
@@ -328,6 +328,7 @@
         $(document).ready(function(){
             $('.addToCart-js').on('click', function(){
                 quantity = $('.count-js').html();
+                
                 if(quantity !== '0' && quantity !== 'Không còn sản phẩm' && document.querySelector('.cart-js').dataset.idkhachhang !== ''){
                     toCart();
                     window.location.reload();

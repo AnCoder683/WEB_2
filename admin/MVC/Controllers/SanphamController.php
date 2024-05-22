@@ -87,7 +87,7 @@
                 $hinhanh = $_FILES['images']['name'];
                 $hinhanh_temp = $_FILES['images']['tmp_name'];
                  // Handle file upload
-                $targetDir = '../MVC/assets/img/uploads/';
+                $targetDir = './MVC/assets/img/uploads/';
                 $hinhanh = uniqid().'_'.$hinhanh;
                 $targetFile = $targetDir . $hinhanh;
                 $data["img"] = $hinhanh;
@@ -118,10 +118,10 @@
                         move_uploaded_file($hinhanh_temp, $variantTargetFile);
                     }
                     echo json_encode(['result'=> true, 'message' => 'Thêm sản phẩm thành công']);
-                    exit();
                 } else {
                     echo json_encode(['result'=> false, 'message' => 'Thêm sản phẩm thất bại']);
                 }
+                
             } else {
                 echo json_encode(['result'=> false,'message'=> 'Không nhận được yêu cầu']);
             }

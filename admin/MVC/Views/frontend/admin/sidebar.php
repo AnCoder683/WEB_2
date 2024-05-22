@@ -118,6 +118,12 @@
             </a>
         </li>
 
+        <li id="phasan" class="sidebar-item permission">
+            <a href="<?= URL?>/statistics/phasan.php" class="sidebar-link">
+                <i class="fa-solid fa-chart-simple"></i>
+                <span>Phá sản</span>
+            </a>
+        </li>
         <!-- <li class="sidebar-item">
             <a href="" class="sidebar-link">
                 <i class="fa-solid fa-envelope"></i>

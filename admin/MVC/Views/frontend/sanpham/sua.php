@@ -30,10 +30,10 @@
                     ?>
                 </select>
             </div>
-            <div class="col-12 col-md-6 mb-4">
+            <!-- <div class="col-12 col-md-6 mb-4">
                 <label for="price">Giá </label>
                 <input type="number" class="form-control" name="price" id="price" value="<?= $valuesp['giaSanPham']?>">
-            </div>
+            </div> -->
 
             <div class="col-12 mb-4">
                 <label for="images" class="form-label">Ảnh</label>
@@ -43,12 +43,12 @@
             <div class="col-12 mb-4">
                 <label for="tinhtrang" class="form-label">Tình trạng</label>
                 <select name="tinhtrang">
-                    <?php if($valuesp['tt_xoa'] === 1) {
-                        echo '<option value="1" select>Kích hoạt</option>
-                        <option value="0">Ẩn</option>'; 
+                    <?php if($valuesp['tt_xoa'] === 0) {
+                        echo '<option value="0" select>Kích hoạt</option>
+                        <option value="1">Ẩn</option>'; 
                     } else {
-                        echo '<option value="1">Kích hoạt</option>
-                        <option value="0" select>Ẩn</option>'; 
+                        echo '<option value="0">Kích hoạt</option>
+                        <option value="1" select>Ẩn</option>'; 
                     }
                     ?>
                     
